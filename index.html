@@ -17,7 +17,6 @@ body{
 
 .container{
     width:900px;
-    max-width:900px;
     margin:auto;
 }
 
@@ -168,128 +167,6 @@ button{
     font-size:18px;
     cursor:pointer;
 }
-/* =========================
-   MOBILE RESPONSIVE
-========================= */
-
-@media screen and (max-width:768px){
-
-    body{
-        padding:10px;
-    }
-
-    .container{
-        width:100%;
-    }
-
-    .card{
-        padding:20px 15px;
-        margin-bottom:18px;
-    }
-
-    .section-header{
-        width:180px;
-        font-size:18px;
-        padding:14px 18px;
-    }
-
-    h1{
-        font-size:28px;
-    }
-
-    label,
-    .question-title,
-    .top-title{
-        font-size:18px;
-        margin-bottom:25px;
-    }
-
-    .option,
-    .billing-option{
-        font-size:16px;
-        margin:22px 0;
-    }
-
-    .option input,
-    .billing-option input{
-        width:20px;
-        height:20px;
-    }
-
-    input[type="text"],
-    input[type="number"],
-    textarea{
-        width:100% !important;
-        font-size:16px;
-        box-sizing:border-box;
-    }
-
-    button{
-        width:100%;
-        font-size:16px;
-        padding:14px;
-        margin-top:10px;
-        box-sizing:border-box;
-    }
-
-    .top-flex{
-        flex-direction:column;
-        gap:20px;
-    }
-
-    .top-icons{
-        font-size:26px;
-        gap:18px;
-    }
-
-    p{
-        font-size:16px;
-        line-height:1.6;
-    }
-
-    #discountOptions,
-    #amountBox{
-        margin-left:0 !important;
-    }
-
-    #discountOptions input,
-    #amountBox input{
-        width:100% !important;
-    }
-
-    #selectedBooks div{
-        font-size:15px;
-        word-break:break-word;
-    }
-
-}
-
-/* =========================
-   EXTRA SMALL DEVICES
-========================= */
-
-@media screen and (max-width:480px){
-
-    h1{
-        font-size:24px;
-    }
-
-    .section-header{
-        width:160px;
-        font-size:16px;
-    }
-
-    label,
-    .question-title{
-        font-size:17px;
-    }
-
-    button{
-        font-size:15px;
-        padding:12px;
-    }
-
-}
 
 </style>
 </head>
@@ -329,6 +206,7 @@ button{
         name="booktype"
         value="Package Book"
         onclick="showPackageSection()"
+        required
     >
 
     Package Book
@@ -361,6 +239,7 @@ button{
   id="salesInput" 
   list="salesPersons" 
   placeholder="Type sales person ID or name..." 
+  required
   >
 
 
@@ -424,6 +303,7 @@ button{
         id="customerInput"
         list="customerList"
         placeholder="Type customer code or customer name..."
+        required
     >
 
     <datalist id="customerList">
@@ -1019,31 +899,28 @@ button{
 
     <div class="option">
         <input 
-    type="checkbox" 
-    class="yearCheckbox"
-    name="year"
-    value="2024"
->
+            type="checkbox" 
+            name="yearCheckbox"
+            value="2024"
+        >
         2024
     </div>
 
     <div class="option">
-       <input 
-    type="checkbox" 
-    class="yearCheckbox"
-    name="year"
-    value="2025"
->
+        <input 
+            type="checkbox" 
+            name="yearCheckbox"
+            value="2025"
+        >
         2025
     </div>
 
     <div class="option">
         <input 
-    type="checkbox" 
-    class="yearCheckbox"
-    name="year"
-    value="2026"
->
+            type="checkbox" 
+            name="yearCheckbox"
+            value="2026"
+        >
         2026
     </div>
 
@@ -1097,15 +974,14 @@ button{
         <input 
             type="radio" 
             name="billing"
-            value="Discount"
             onclick="showDiscountOptions(); hideAmountBox();"
         >
         Discount (%)
     </div>
 
-    <!-- DISCOUNT TEXTBOX -->
+   <!-- DISCOUNT TEXTBOX -->
 <div 
-    id="discountOptions" 
+    id="discountOptions"
     style="
         display:none;
         margin-left:40px;
@@ -1113,85 +989,29 @@ button{
     "
 >
 
-    <!-- 1st Discount -->
-    <div style="margin-bottom:20px;">
+    <input 
+        type="text"
+        id="packageDiscount"
+        placeholder="Enter Discount %"
+        required
+        style="
+            width:250px;
+            border:none;
+            border-bottom:1px solid #999;
+            font-size:18px;
+            padding:10px 0;
+            outline:none;
+            background:transparent;
+        "
+    >
 
-        <label style="font-size:18px;">
-            1st Discount %
-        </label>
-
-        <input 
-            type="number"
-            id="discount1"
-            placeholder="Enter 1st Discount %"
-            style="
-                width:250px;
-                border:none;
-                border-bottom:1px solid #999;
-                font-size:18px;
-                padding:10px 0;
-                outline:none;
-                background:transparent;
-            "
-        >
-
-    </div>
-
-    <!-- 2nd Discount -->
-    <div style="margin-bottom:20px;">
-
-        <label style="font-size:18px;">
-            2nd Discount %
-        </label>
-
-        <input 
-            type="number"
-            id="discount2"
-            placeholder="Enter 2nd Discount %"
-            style="
-                width:250px;
-                border:none;
-                border-bottom:1px solid #999;
-                font-size:18px;
-                padding:10px 0;
-                outline:none;
-                background:transparent;
-            "
-        >
-
-    </div>
-
-    <!-- 3rd Discount -->
-    <div style="margin-bottom:20px;">
-
-        <label style="font-size:18px;">
-            3rd Discount %
-        </label>
-
-        <input 
-            type="number"
-            id="discount3"
-            placeholder="Enter 3rd Discount %"
-            style="
-                width:250px;
-                border:none;
-                border-bottom:1px solid #999;
-                font-size:18px;
-                padding:10px 0;
-                outline:none;
-                background:transparent;
-            "
-        >
-
-    </div>
 </div>
 
-       <!-- FOC -->
+    <!-- FOC -->
     <div class="billing-option">
         <input 
             type="radio" 
             name="billing"
-            value="FOC"
             onclick="hideDiscountOptions(); hideAmountBox();"
         >
         FOC
@@ -1202,7 +1022,6 @@ button{
         <input 
             type="radio" 
             name="billing"
-            value="Full Bill"
             onclick="hideDiscountOptions(); hideAmountBox();"
         >
         Full Bill
@@ -1211,10 +1030,8 @@ button{
     <!-- CERTAIN AMT BILL -->
     <div class="billing-option">
         <input 
-            id="certainAmount"
             type="radio" 
             name="billing"
-            value="Certain AMT"
             onclick="showAmountBox(); hideDiscountOptions();"
         >
         Certain Amt Bill
@@ -1231,7 +1048,7 @@ button{
     >
 
         <input 
-            type="number"
+            type="text"
             placeholder="Enter Amount"
             style="
                 width:250px;
@@ -1258,10 +1075,9 @@ button{
             (e.g., dispatch to different address).
         </p>
 
-       <input 
-    type="text"
-    id="packageComment"
-    placeholder="Long-answer text">
+        <input 
+            type="text"
+ placeholder="Long-answer text">
 
     </div>
 
@@ -1421,69 +1237,76 @@ button{
 </div>
 
 
-   <!-- SELECTIVE SECTION 3 DISCOUNT -->
+   <!-- DISCOUNT -->
 <div class="card">
 
     <div class="question-title">
         Discount <span class="required">*</span>
     </div>
 
-    <!-- 1st Discount -->
-    <input 
-        type="text"
-        id="discount1"
-        placeholder="Enter 1st Discount %"
+    <!-- DISCOUNT TEXTBOXES -->
+    <div 
+        id="selectiveDiscountOptions"
         style="
-            width:250px;
-            border:none;
-            border-bottom:1px solid #999;
-            font-size:18px;
-            padding:10px 0;
-            outline:none;
-            background:transparent;
-            margin-bottom:25px;
-            display:block;
+            margin-top:20px;
         "
     >
 
-    <!-- 2nd Discount -->
-    <input 
-        type="text"
-        id="discount2"
-        placeholder="Enter 2nd Discount %"
-        style="
-            width:250px;
-            border:none;
-            border-bottom:1px solid #999;
-            font-size:18px;
-            padding:10px 0;
-            outline:none;
-            background:transparent;
-            margin-bottom:25px;
-            display:block;
-        "
-    >
+        <input 
+            type="text"
+            id="selectiveDiscount1"
+            placeholder="Enter Discount 1 %"
+            style="
+                width:250px;
+                border:none;
+                border-bottom:1px solid #999;
+                font-size:18px;
+                padding:10px 0;
+                outline:none;
+                background:transparent;
+                display:block;
+                margin-bottom:20px;
+            "
+            required
+        >
 
-    <!-- 3rd Discount -->
-    <input 
-        type="text"
-        id="discount3"
-        placeholder="Enter 3rd Discount %"
-        style="
-            width:250px;
-            border:none;
-            border-bottom:1px solid #999;
-            font-size:18px;
-            padding:10px 0;
-            outline:none;
-            background:transparent;
-            margin-bottom:25px;
-            display:block;
-        "
-    >
+        <input 
+            type="text"
+            id="selectiveDiscount2"
+            placeholder="Enter Discount 2 %"
+            style="
+                width:250px;
+                border:none;
+                border-bottom:1px solid #999;
+                font-size:18px;
+                padding:10px 0;
+                outline:none;
+                background:transparent;
+                display:block;
+                margin-bottom:20px;
+            "
+        >
 
-   
+        <input 
+            type="text"
+            id="selectiveDiscount3"
+            placeholder="Enter Discount 3 %"
+            style="
+                width:250px;
+                border:none;
+                border-bottom:1px solid #999;
+                font-size:18px;
+                padding:10px 0;
+                outline:none;
+                background:transparent;
+                display:block;
+            "
+        >
+
+    </div>
+
 </div>
+
 
     <!-- COMMENT -->
     <div class="card">
@@ -1497,10 +1320,10 @@ button{
             (e.g., dispatch to different address – mention full address).
         </p>
 
-       <input 
-    type="text"
-    id="selectiveComment"
-    placeholder="Long-answer text">
+        <input 
+            type="text"
+            placeholder="Long-answer text"
+        >
 
     </div>
 
@@ -1591,7 +1414,7 @@ function showSelectiveSection() {
 
 }
 /* =========================
-   DISCOUNT SECTION
+   PACKAGE DISCOUNT SECTION
 ========================= */
 
 function showDiscountOptions() {
@@ -1606,6 +1429,26 @@ function hideDiscountOptions() {
 
     document.getElementById(
         "discountOptions"
+    ).style.display = "none";
+
+}
+
+/* =========================
+   SELECTIVE DISCOUNT SECTION
+========================= */
+
+function showSelectiveDiscountOptions() {
+
+    document.getElementById(
+        "selectiveDiscountOptions"
+    ).style.display = "block";
+
+}
+
+function hideSelectiveDiscountOptions() {
+
+    document.getElementById(
+        "selectiveDiscountOptions"
     ).style.display = "none";
 
 }
@@ -1633,11 +1476,11 @@ function hideAmountBox() {
 /* =========================
    BOOK LIST YEARWISE
 ========================= */
+
 function updateBookList() {
 
-    // ONLY take year checkboxes from Selective Section
     const checkedYears = document.querySelectorAll(
-        '#selectiveSection .yearCheckbox:checked'
+        ".yearCheckbox:checked"
     );
 
     const datalist = document.getElementById("bookList");
@@ -1688,10 +1531,11 @@ function updateBookList() {
 
     }
 
-      /* 2025 */
+     /* 2025 */
         else if(year === "2025") {
 
             books.push(
+
           "SB2100048-Book- MOONLIGHT",
 "SB2100049-Book - VERANDA",
 "SB2100050-Book - HOUSE BOUCLES",
@@ -1730,10 +1574,11 @@ function updateBookList() {
 
     }
 
-     /* 2026 */
+    /* 2026 */
         else if(year === "2026") {
 
             books.push(
+
           "SB2100092-Book- ALPEN",
 "SB2100093-Book- GRIT",
 "SB2100117-Book - LINO SHEERS",
@@ -1755,7 +1600,7 @@ function updateBookList() {
 
     });
 
-     books.forEach(function(book){
+    books.forEach(function(book){
 
         const option = document.createElement("option");
 
@@ -1767,6 +1612,21 @@ function updateBookList() {
 
 }
 
+/* =========================
+   AUTO SCROLL TO BOOK SECTION
+========================= */
+
+function goToBooks() {
+
+    document
+        .getElementById("bookSection")
+        .scrollIntoView({
+
+            behavior: "smooth"
+
+        });
+
+}
 
 /* =========================
    CLEAR FORM
@@ -1803,20 +1663,7 @@ function addBook() {
 
     const value = input.value.trim();
 
-    if(value === "") {
-
-        alert("Please enter/select a book");
-
-        return;
-    }
-
-    // prevent duplicate books
-    if(selectedBooks.includes(value)) {
-
-        alert("Book already added");
-
-        return;
-    }
+    if(value === "") return;
 
     selectedBooks.push(value);
 
@@ -1825,7 +1672,6 @@ function addBook() {
     input.value = "";
 
 }
-
 
 function renderBooks() {
 
@@ -1906,6 +1752,22 @@ function addQuantityField() {
 
 }
 
+function showSelectiveDiscountOptions() {
+
+    document.getElementById(
+        "selectiveDiscountOptions"
+    ).style.display = "block";
+
+}
+
+function hideSelectiveDiscountOptions() {
+
+    document.getElementById(
+        "selectiveDiscountOptions"
+    ).style.display = "none";
+
+}
+
 
 document
 .getElementById("bookingForm")
@@ -1933,7 +1795,6 @@ document
     ).map(x => x.value).join(", "),
 
     bookname:
-        
         selectedBooks.join(", "),
 
     packageQuantity: Array.from(
@@ -1949,123 +1810,81 @@ document
     ).map(x => x.value).join(", "),
 
     billing:
-    document.querySelector(
-        'input[name="billing"]:checked'
-    )?.value || "",
+        document.querySelector(
+            'input[name="billing"]:checked'
+        )?.parentElement.innerText.trim() || "",
 
-   discount1:
-    document.getElementById("discount1")?.value || "",
+    discount:
+        document.querySelector(
+            '#discountOptions input'
+        )?.value || "",
 
-   discount2:
-    document.getElementById("discount2")?.value || "",
-
-   discount3:
-    document.getElementById("discount3")?.value || "",
-
-   discount4:
-    document.getElementById("discount4")?.value || "",
     amount:
         document.querySelector(
             '#amountBox input'
         )?.value || "",
 
-   comment:
-    document.getElementById("packageSection").style.display === "block"
-    ? document.getElementById("packageComment").value
-    : document.getElementById("selectiveComment").value,
+   selectiveDiscount:
+[
+        document.getElementById(
+            "selectiveDiscount1"
+        )?.value || "",
+
+        document.getElementById( 
+            "selectiveDiscount2"
+        )?.value || "",
+
+        document.getElementById(
+            "selectiveDiscount3"
+        )?.value || ""
+
+]
+  .filter(x => x !== "")
+  .join(", "),
+
+
+    comment:
+        document.querySelector(
+            'input[placeholder="Long-answer text"]'
+        )?.value || "",
+
     approval:
         "Pending"
 
 };
 
-  fetch(
-  "https://script.google.com/macros/s/AKfycbzgnRUmIB22l-t9jzr56fYafN0fjymBg9yRzrlz7cEsJ7apkt6zOP0qtHdAAXQmCSZ2Gg/exec",
-  {
-    method: "POST",
-    body: JSON.stringify(data),
-    mode: "no-cors"
-  }
+   fetch(
+    "https://script.google.com/macros/s/AKfycbzgnRUmIB22l-t9jzr56fYafN0fjymBg9yRzrlz7cEsJ7apkt6zOP0qtHdAAXQmCSZ2Gg/exec",
+    {
+
+        method: "POST",
+
+        headers: {
+            "Content-Type": "application/json"
+        },
+
+        body: JSON.stringify(data)
+
+    }
 )
-.then(() => {
+.then(res => res.json())
+.then(res => {
 
-  alert("Submitted Successfully");
+    alert("Submitted Successfully");
 
-  document.getElementById("bookingForm").reset();
+    document.getElementById("bookingForm").reset();
 
 })
-.catch(error => {
+.catch(err => {
 
-  console.error(error);
+    console.error(err);
 
-  alert("Submission Failed");
+    alert("Submission Failed");
 
 });
+
 });
 
-function authorizeEmail() {
-
-  MailApp.sendEmail(
-    "claerdabre@gmail.com",
-    "Authorization Test",
-    "Email permission granted"
-  );
-
-}
-/* =========================
-   ADD NEW SALES PERSON
-========================= */
-
-function addSalesPerson() {
-
-    const newPerson = prompt(
-        "Enter New Sales Person Name"
-    );
-
-    if(!newPerson) return;
-
-    const datalist =
-        document.getElementById("salesPersons");
-
-    const option =
-        document.createElement("option");
-
-    option.value = newPerson;
-
-    datalist.appendChild(option);
-
-    document.getElementById(
-        "salesInput"
-    ).value = newPerson;
-
-}
-
-/* =========================
-   ADD NEW CUSTOMER
-========================= */
-
-function addCustomer() {
-
-    const newCustomer = prompt(
-        "Enter New Customer Name"
-    );
-
-    if(!newCustomer) return;
-
-    const datalist =
-        document.getElementById("customerList");
-
-    const option =
-        document.createElement("option");
-
-    option.value = newCustomer;
-
-    datalist.appendChild(option);
-
-    document.getElementById(
-        "customerInput"
-    ).value = newCustomer;
-
-}
 </script>
 
 </body>
