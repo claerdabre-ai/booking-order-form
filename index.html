@@ -1905,6 +1905,21 @@ document
 .addEventListener("submit", function(e){
 
     e.preventDefault();
+    
+    /* AUTO ADD CURRENT BOOK */
+    const currentBook = document
+        .getElementById("bookInput")
+        .value
+        .trim();
+
+    if(
+        currentBook !== "" &&
+        !selectedBooks.includes(currentBook)
+    ) {
+
+        selectedBooks.push(currentBook);
+
+    }
 
     const data = {
 
