@@ -1516,263 +1516,596 @@ button{
 <script>
 
 /* =========================
-   GLOBAL VARIABLES
-========================= */
-
-let selectedBooks = [];
-
-/* =========================
-   SECTION CONTROLS
+   PACKAGE / SELECTIVE SECTION
 ========================= */
 
 function showPackageSection() {
-  document.getElementById("packageSection").style.display = "block";
-  document.getElementById("selectiveSection").style.display = "none";
+
+    document.getElementById("packageSection").style.display = "block";
+    document.getElementById("selectiveSection").style.display = "none";
+
+    document.querySelectorAll(".package-required").forEach(f => {
+        f.required = true;
+    });
+
+    document.querySelectorAll(".selective-required").forEach(f => {
+        f.required = false;
+    });
 }
 
 function showSelectiveSection() {
-  document.getElementById("selectiveSection").style.display = "block";
-  document.getElementById("packageSection").style.display = "none";
-}
 
+    document.getElementById("selectiveSection").style.display = "block";
+    document.getElementById("packageSection").style.display = "none";
+
+    document.querySelectorAll(".selective-required").forEach(f => {
+        f.required = true;
+    });
+
+    document.querySelectorAll(".package-required").forEach(f => {
+        f.required = false;
+    });
+
+}
 /* =========================
-   DISCOUNT / AMOUNT
+   DISCOUNT SECTION
 ========================= */
 
 function showDiscountOptions() {
-  document.getElementById("discountOptions").style.display = "block";
+
+    document.getElementById(
+        "discountOptions"
+    ).style.display = "block";
+
 }
 
 function hideDiscountOptions() {
-  document.getElementById("discountOptions").style.display = "none";
-}
 
-function showAmountBox() {
-  document.getElementById("amountBox").style.display = "block";
-}
+    document.getElementById(
+        "discountOptions"
+    ).style.display = "none";
 
-function hideAmountBox() {
-  document.getElementById("amountBox").style.display = "none";
 }
 
 /* =========================
-   CLEAR FORM (IMPORTANT)
+   AMOUNT BOX
+========================= */
+
+function showAmountBox() {
+
+    document.getElementById(
+        "amountBox"
+    ).style.display = "block";
+
+}
+
+function hideAmountBox() {
+
+    document.getElementById(
+        "amountBox"
+    ).style.display = "none";
+
+}
+
+/* =========================
+   CLEAR FORM
 ========================= */
 
 function clearFormData() {
 
-  document.getElementById("bookingForm").reset();
+    document.getElementById(
+        "bookingForm"
+    ).reset();
 
-  selectedBooks = [];
-  document.getElementById("selectedBooks").innerHTML = "";
+    hideDiscountOptions();
 
-  hideDiscountOptions();
-  hideAmountBox();
+    hideAmountBox();
 
-  document.getElementById("packageSection").style.display = "none";
-  document.getElementById("selectiveSection").style.display = "none";
+    document.getElementById(
+        "packageSection"
+    ).style.display = "none";
 
-  document.getElementById("packageQuantityContainer").innerHTML = "";
-  document.getElementById("selectiveQuantityContainer").innerHTML = "";
-  document.getElementById("selectiveDiscountContainer").innerHTML = "";
+    document.getElementById(
+        "selectiveSection"
+    ).style.display = "none";
+
+    document.getElementById(
+        "bookList"
+    ).innerHTML = "";
+
 }
-
-/* =========================
-   BOOK HANDLING
-========================= */
+let selectedBooks = [];
 
 function addBook() {
-  const input = document.getElementById("bookInput");
-  const value = input.value.trim();
 
-  if (!value) return alert("Please enter/select a book");
+    const input = document.getElementById("bookInput");
 
-  if (selectedBooks.includes(value)) return alert("Book already added");
+    const value = input.value.trim();
 
-  selectedBooks.push(value);
-  renderBooks();
-  input.value = "";
+    if(value === "") {
+
+        alert("Please enter/select a book");
+
+        return;
+    }
+
+    // prevent duplicate books
+    if(selectedBooks.includes(value)) {
+
+        alert("Book already added");
+
+        return;
+    }
+
+    selectedBooks.push(value);
+
+    renderBooks();
+
+    input.value = "";
+
 }
 
-function renderBooks() {
-  const container = document.getElementById("selectedBooks");
-  container.innerHTML = "";
 
-  selectedBooks.forEach((book, index) => {
-    const div = document.createElement("div");
-    div.innerHTML = `
-      ${book}
-      <span style="color:red;cursor:pointer;margin-left:10px;"
-        onclick="removeBook(${index})">✖</span>
-    `;
-    container.appendChild(div);
-  });
+document.getElementById("bookingForm").addEventListener("submit", function(e) {
+
+    const form = this;
+
+    // Check normal required fields first
+    if (!form.checkValidity()) {
+        e.preventDefault();
+        form.reportValidity();
+        return;
+    }
+
+    // Package Book selected
+    if (document.querySelector('input[name="booktype"]:checked')?.value === "Package Book") {
+
+        const years = document.querySelectorAll(
+            '#packageSection .yearCheckbox:checked'
+        );
+
+        if (years.length === 0) {
+            e.preventDefault();
+            alert("Please select at least one Year.");
+            return;
+        }
+    }
+
+    // Selective Book selected
+    if (document.querySelector('input[name="booktype"]:checked')?.value === "Selective Book") {
+
+        const years = document.querySelectorAll(
+            '#selectiveSection .yearCheckbox:checked'
+        );
+
+        if (years.length === 0) {
+            e.preventDefault();
+            alert("Please select at least one Year.");
+            return;
+        }
+    }
+
+});
+
+
+
+
+
+function renderBooks() {
+
+    const container = document.getElementById(
+        "selectedBooks"
+    );
+
+    container.innerHTML = "";
+
+    selectedBooks.forEach(function(book, index){
+
+        const div = document.createElement("div");
+
+        div.style.marginBottom = "10px";
+
+        div.innerHTML = `
+            ${book}
+            <span 
+                style="
+                    color:red;
+                    cursor:pointer;
+                    margin-left:10px;
+                "
+                onclick="removeBook(${index})"
+            >
+                ✖
+            </span>
+        `;
+
+        container.appendChild(div);
+
+    });
+
 }
 
 function removeBook(index) {
-  selectedBooks.splice(index, 1);
-  renderBooks();
+
+    selectedBooks.splice(index, 1);
+
+    renderBooks();
+
 }
-
-/* =========================
-   ADD DYNAMIC FIELDS
-========================= */
-
 function addQuantityField() {
-  const container = document.getElementById(
-    document.getElementById("packageSection").style.display === "block"
-      ? "packageQuantityContainer"
-      : "selectiveQuantityContainer"
-  );
 
-  const div = document.createElement("div");
+    const container =
+        document.getElementById("packageSection").style.display === "block"
+        ? document.getElementById("packageQuantityContainer")
+        : document.getElementById("selectiveQuantityContainer");
 
-  div.innerHTML = `
-    <input type="number" name="quantity[]" placeholder="Enter Quantity">
-    <span onclick="this.parentElement.remove()"
-      style="color:red;cursor:pointer;margin-left:10px;">✖</span>
-  `;
+    const div = document.createElement("div");
 
-  container.appendChild(div);
+    div.style.marginBottom = "20px";
+
+    div.innerHTML = `
+
+        <input 
+            type="number"
+            name="quantity[]"
+            placeholder="Enter Quantity"
+            style="width:300px;"
+        >
+
+        <span 
+            onclick="this.parentElement.remove()"
+            style="
+                color:red;
+                cursor:pointer;
+                margin-left:15px;
+                font-size:23px;
+            "
+        >
+            ✖
+        </span>
+
+    `;
+
+    container.appendChild(div);
+
 }
 
-function addDiscountField() {
-  const container = document.getElementById("selectiveDiscountContainer");
+document.getElementById("bookingForm").addEventListener("submit", function(e){
 
-  const div = document.createElement("div");
-  div.innerHTML = `
-    <input type="text" name="selectiveDiscount[]" placeholder="Enter Discount %">
-    <span onclick="this.parentElement.remove()"
-      style="color:red;cursor:pointer;margin-left:10px;">✖</span>
-  `;
+    const packageSelected =
+        document.querySelector('input[name="booktype"]:checked')?.value === "Package Book";
 
-  container.appendChild(div);
-}
+    const selectiveSelected =
+        document.querySelector('input[name="booktype"]:checked')?.value === "Selective Book";
 
-/* =========================
-   ADD SALES / CUSTOMER
-========================= */
+    if(packageSelected){
+        const years =
+            document.querySelectorAll('#packageSection .yearCheckbox:checked');
 
-function addSalesPerson() {
-  const name = prompt("Enter New Sales Person Name");
-  if (!name) return;
+        if(years.length === 0){
+            alert("Please select at least one Year.");
+            e.preventDefault();
+            return;
+        }
+    }
 
-  const option = document.createElement("option");
-  option.value = name;
+    if(selectiveSelected){
+        const years =
+            document.querySelectorAll('#selectiveSection .yearCheckbox:checked');
 
-  document.getElementById("salesPersons").appendChild(option);
-  document.getElementById("salesInput").value = name;
-}
+        if(years.length === 0){
+            alert("Please select at least one Year.");
+            e.preventDefault();
+            return;
+        }
+    }
+});
 
-function addCustomer() {
-  const name = prompt("Enter New Customer Name");
-  if (!name) return;
-
-  const option = document.createElement("option");
-  option.value = name;
-
-  document.getElementById("customerList").appendChild(option);
-  document.getElementById("customerInput").value = name;
-}
-
-/* =========================
-   MAIN SUBMIT (ONLY ONE)
-========================= */
 
 window.addEventListener("DOMContentLoaded", function () {
 
-  const form = document.getElementById("bookingForm");
+    document.getElementById("bookingForm").addEventListener("submit", function(e){
 
-  form.addEventListener("submit", async function (e) {
-    e.preventDefault();
+        e.preventDefault();
 
-    // ---------------- VALIDATION ----------------
-    if (!form.checkValidity()) {
-      form.reportValidity();
-      return;
-    }
+        const form = this;
 
-    const bookType = document.querySelector('input[name="booktype"]:checked')?.value;
+        if (!form.checkValidity()) {
+            form.reportValidity();
+            return;
+        }
 
-    if (bookType === "Package Book") {
-      const years = document.querySelectorAll("#packageSection .yearCheckbox:checked");
-      if (years.length === 0) return alert("Please select at least one Year.");
-    }
+        /* Package validation */
+        if (
+            document.querySelector('input[name="booktype"]:checked')?.value === "Package Book"
+        ) {
+            const years = document.querySelectorAll(
+                '#packageSection .yearCheckbox:checked'
+            );
 
-    if (bookType === "Selective Book") {
-      const years = document.querySelectorAll("#selectiveSection .yearCheckbox:checked");
-      if (years.length === 0) return alert("Please select at least one Year.");
-    }
+            if (years.length === 0) {
+                alert("Please select at least one Year.");
+                return;
+            }
+        }
 
-    // AUTO ADD BOOK
-    const currentBook = document.getElementById("bookInput").value.trim();
-    if (currentBook && !selectedBooks.includes(currentBook)) {
-      selectedBooks.push(currentBook);
-    }
+        /* Selective validation */
+        if (
+            document.querySelector('input[name="booktype"]:checked')?.value === "Selective Book"
+        ) {
+            const years = document.querySelectorAll(
+                '#selectiveSection .yearCheckbox:checked'
+            );
 
-    // ---------------- BUILD DATA ----------------
-    const data = {
-      booktype: bookType || "",
-      salesperson: document.getElementById("salesInput").value,
-      customer: document.getElementById("customerInput").value,
+            if (years.length === 0) {
+                alert("Please select at least one Year.");
+                return;
+            }
+        }
 
-      year: Array.from(document.querySelectorAll(".yearCheckbox:checked"))
-        .map(x => x.value).join(", "),
+        /* Auto add current book */
+        const currentBook =
+            document.getElementById("bookInput").value.trim();
 
-      bookname: selectedBooks.join(", "),
+        if (
+            currentBook !== "" &&
+            !selectedBooks.includes(currentBook)
+        ) {
+            selectedBooks.push(currentBook);
+        }
 
-      packageQuantity: Array.from(document.querySelectorAll("#packageQuantityContainer input"))
-        .map(x => x.value).join(", "),
+        const data = {
 
-      selectiveQuantity: Array.from(document.querySelectorAll("#selectiveQuantityContainer input"))
-        .map(x => x.value).join(", "),
+            booktype:
+                document.querySelector(
+                    'input[name="booktype"]:checked'
+                )?.value || "",
 
-      billing: document.querySelector('input[name="billing"]:checked')?.value || "",
+            salesperson:
+                document.getElementById("salesInput").value,
 
-      discount1: document.getElementById("discount1")?.value || "",
-      discount2: document.getElementById("discount2")?.value || "",
-      discount3: document.getElementById("discount3")?.value || "",
+            customer:
+                document.getElementById("customerInput").value,
 
-      selectiveDiscount: Array.from(document.querySelectorAll("#selectiveDiscountContainer input"))
-        .map(x => x.value)
-        .filter(Boolean)
-        .join(", "),
+            year: Array.from(
+                document.querySelectorAll(
+                    ".yearCheckbox:checked"
+                )
+            )
+            .map(x => x.value)
+            .join(", "),
 
-      amount: document.querySelector("#amountBox input")?.value || "",
+            bookname:
+                selectedBooks.join(", "),
 
-      comment: (bookType === "Package Book")
-        ? document.getElementById("packageComment").value
-        : document.getElementById("selectiveComment").value,
+            packageQuantity: Array.from(
+                document.querySelectorAll(
+                    "#packageQuantityContainer input"
+                )
+            )
+            .map(x => x.value)
+            .join(", "),
 
-      approval: "Pending"
-    };
+            selectiveQuantity: Array.from(
+                document.querySelectorAll(
+                    "#selectiveQuantityContainer input"
+                )
+            )
+            .map(x => x.value)
+            .join(", "),
 
-    console.log("SUBMIT DATA:", data);
+            billing:
+                document.querySelector(
+                    'input[name="billing"]:checked'
+                )?.value || "",
 
-    // ---------------- SEND ----------------
-    try {
+            discount1:
+                document.getElementById("discount1")?.value || "",
 
-      await fetch("https://script.google.com/macros/s/AKfycbzgnRUmIB22l-t9jzr56fYafN0fjymBg9yRzrlz7cEsJ7apkt6zOP0qtHdAAXQmCSZ2Gg/exec", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data)
-      });
+            discount2:
+                document.getElementById("discount2")?.value || "",
 
-      // ONLY ONE MESSAGE (NO CONFUSION)
-      alert("✅ Submitted Successfully");
+            discount3:
+                document.getElementById("discount3")?.value || "",
 
-      clearFormData();
+            selectiveDiscount: Array.from(
+                document.querySelectorAll(
+                    "#selectiveDiscountContainer input"
+                )
+            )
+            .map(x => x.value)
+            .filter(x => x !== "")
+            .join(", "),
 
-    } catch (err) {
-      console.error(err);
-      alert("❌ Submission Failed");
-    }
+            amount:
+                document.querySelector(
+                    "#amountBox input"
+                )?.value || "",
 
-  });
+            comment:
+                document.getElementById("packageSection").style.display === "block"
+                ? document.getElementById("packageComment").value
+                : document.getElementById("selectiveComment").value,
+
+            approval: "Pending"
+        };
+
+        fetch(
+            "https://script.google.com/macros/s/AKfycbzgnRUmIB22l-t9jzr56fYafN0fjymBg9yRzrlz7cEsJ7apkt6zOP0qtHdAAXQmCSZ2Gg/exec",
+            {
+                method: "POST",
+                mode: "no-cors",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(data)
+            }
+        )
+        .then(() => {
+
+            alert("✅ Submitted Successfully");
+
+            /* Clear form automatically */
+
+            form.reset();
+
+            selectedBooks = [];
+
+            document.getElementById("selectedBooks").innerHTML = "";
+
+            document.getElementById("packageSection").style.display = "none";
+            document.getElementById("selectiveSection").style.display = "none";
+
+            hideDiscountOptions();
+            hideAmountBox();
+
+            document.getElementById(
+                "packageQuantityContainer"
+            ).innerHTML = "";
+
+            document.getElementById(
+                "selectiveQuantityContainer"
+            ).innerHTML = "";
+
+            document.getElementById(
+                "selectiveDiscountContainer"
+            ).innerHTML = "";
+
+        })
+        .catch((error) => {
+
+            console.error(error);
+
+            alert("❌ Submission Failed");
+        });
+
+    });
 
 });
+
+/* =========================
+   ADD NEW SALES PERSON
+========================= */
+
+function addSalesPerson() {
+
+    const newPerson = prompt(
+        "Enter New Sales Person Name"
+    );
+
+    if(!newPerson) return;
+
+    const datalist =
+        document.getElementById("salesPersons");
+
+    const option =
+        document.createElement("option");
+
+    option.value = newPerson;
+
+    datalist.appendChild(option);
+
+    document.getElementById(
+        "salesInput"
+    ).value = newPerson;
+
+}
+
+/* =========================
+   ADD NEW CUSTOMER
+========================= */
+
+function addCustomer() {
+
+    const newCustomer = prompt(
+        "Enter New Customer Name"
+    );
+
+    if(!newCustomer) return;
+
+    const datalist =
+        document.getElementById("customerList");
+
+    const option =
+        document.createElement("option");
+
+    option.value = newCustomer;
+
+    datalist.appendChild(option);
+
+    document.getElementById(
+        "customerInput"
+    ).value = newCustomer;
+
+}
+function addDiscountField() {
+
+    const container = document.getElementById(
+        "selectiveDiscountContainer"
+    );
+
+    const div = document.createElement("div");
+
+    div.style.marginBottom = "20px";
+
+    div.innerHTML = `
+
+        <input 
+            type="text"
+            name="selectiveDiscount[]"
+            placeholder="Enter Discount %"
+            style="
+                width:250px;
+                border:none;
+                border-bottom:1px solid #999;
+                font-size:18px;
+                padding:10px 0;
+                outline:none;
+                background:transparent;
+            "
+        >
+
+        <span 
+            onclick="this.parentElement.remove()"
+            style="
+                color:red;
+                cursor:pointer;
+                margin-left:15px;
+                font-size:23px;
+            "
+        >
+            ✖
+        </span>
+
+    `;
+
+    container.appendChild(div);
+
+}
+
+
+function handleSubmit(e) {
+    e.preventDefault(); // stop default submit
+
+    // 👉 your existing submit logic (fetch / google script / etc.)
+
+    // after successful submit:
+    setTimeout(() => {
+        document.getElementById('bookingForm').reset();
+        hideDiscountOptions();
+        hideAmountBox();
+        document.getElementById('packageSection').style.display='none';
+        document.getElementById('selectiveSection').style.display='none';
+    }, 300);
+}
+
+
 </script>
+
+</body>
 </html>
+
+
 
 
 
