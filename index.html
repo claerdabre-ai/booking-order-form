@@ -330,7 +330,7 @@ button{
         value="Package Book"
         onclick="showPackageSection()"
         required 
-        >
+>
        
 
     Package Book
@@ -1823,6 +1823,51 @@ function addBook() {
     input.value = "";
 
 }
+
+
+document.getElementById("bookingForm").addEventListener("submit", function(e) {
+
+    const form = this;
+
+    // Check normal required fields first
+    if (!form.checkValidity()) {
+        e.preventDefault();
+        form.reportValidity();
+        return;
+    }
+
+    // Package Book selected
+    if (document.querySelector('input[name="booktype"]:checked')?.value === "Package Book") {
+
+        const years = document.querySelectorAll(
+            '#packageSection .yearCheckbox:checked'
+        );
+
+        if (years.length === 0) {
+            e.preventDefault();
+            alert("Please select at least one Year.");
+            return;
+        }
+    }
+
+    // Selective Book selected
+    if (document.querySelector('input[name="booktype"]:checked')?.value === "Selective Book") {
+
+        const years = document.querySelectorAll(
+            '#selectiveSection .yearCheckbox:checked'
+        );
+
+        if (years.length === 0) {
+            e.preventDefault();
+            alert("Please select at least one Year.");
+            return;
+        }
+    }
+
+});
+
+
+
 
 
 function renderBooks() {
