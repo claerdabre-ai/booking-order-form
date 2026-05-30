@@ -1692,30 +1692,9 @@ function addQuantityField() {
 }
 
 
-    if(packageSelected){
-        const years =
-            document.querySelectorAll('#packageSection .yearCheckbox:checked');
+   
 
-        if(years.length === 0){
-            alert("Please select at least one Year.");
-            e.preventDefault();
-            return;
-        }
-    }
-
-    if(selectiveSelected){
-        const years =
-            document.querySelectorAll('#selectiveSection .yearCheckbox:checked');
-
-        if(years.length === 0){
-            alert("Please select at least one Year.");
-            e.preventDefault();
-            return;
-        }
-    }
-});
-
-
+       
 window.addEventListener("DOMContentLoaded", function () {
 
     document.getElementById("bookingForm").addEventListener("submit", function(e){
