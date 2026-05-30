@@ -1770,11 +1770,51 @@ function addQuantityField() {
 
 }
 
+document.getElementById("bookingForm").addEventListener("submit", function(e){
+
+    const packageSelected =
+        document.querySelector('input[name="booktype"]:checked')?.value === "Package Book";
+
+    const selectiveSelected =
+        document.querySelector('input[name="booktype"]:checked')?.value === "Selective Book";
+
+    if(packageSelected){
+        const years =
+            document.querySelectorAll('#packageSection .yearCheckbox:checked');
+
+        if(years.length === 0){
+            alert("Please select at least one Year.");
+            e.preventDefault();
+            return;
+        }
+    }
+
+    if(selectiveSelected){
+        const years =
+            document.querySelectorAll('#selectiveSection .yearCheckbox:checked');
+
+        if(years.length === 0){
+            alert("Please select at least one Year.");
+            e.preventDefault();
+            return;
+        }
+    }
+});
 
 
 window.addEventListener("DOMContentLoaded", function () {
 
-    
+    document.getElementById("bookingForm").addEventListener("submit", function(e){
+
+        e.preventDefault();
+
+        const form = this;
+
+        if (!form.checkValidity()) {
+            form.reportValidity();
+            return;
+        }
+
         /* Package validation */
         if (
             document.querySelector('input[name="booktype"]:checked')?.value === "Package Book"
@@ -1941,7 +1981,7 @@ window.addEventListener("DOMContentLoaded", function () {
 
     });
 
-
+});
 
 /* =========================
    ADD NEW SALES PERSON
@@ -2041,6 +2081,22 @@ function addDiscountField() {
 
     container.appendChild(div);
 
+}
+
+
+function handleSubmit(e) {
+    e.preventDefault(); // stop default submit
+
+    // 👉 your existing submit logic (fetch / google script / etc.)
+
+    // after successful submit:
+    setTimeout(() => {
+        document.getElementById('bookingForm').reset();
+        hideDiscountOptions();
+        hideAmountBox();
+        document.getElementById('packageSection').style.display='none';
+        document.getElementById('selectiveSection').style.display='none';
+    }, 300);
 }
 
 
