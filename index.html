@@ -1079,15 +1079,6 @@ button{
 
     </div>
 
-    <!-- ADD BUTTON -->
-    <button 
-        type="button"
-        onclick="addQuantityField()"
-        style="margin-top:10px;"
-    >
-        + Add More Quantity
-    </button>
-
 </div>
 
    <!-- BILLING OPTION -->
@@ -1382,21 +1373,7 @@ button{
         
     >
 
-    <button 
-        type="button"
-        onclick="addBook()"
-        style="
-            margin-top:10px;
-            padding:07px 17px;
-        "
-    >
-        Add Book
-    </button>
-
-    <datalist id="bookList"></datalist>
-
-    <div id="selectedBooks" style="margin-top:20px;"></div>
-
+   
 </div>
 
     <!-- QUANTITY -->
@@ -1424,15 +1401,6 @@ button{
 
     </div>
 
-    <!-- ADD BUTTON -->
-    <button 
-        type="button"
-        onclick="addQuantityField()"
-        style="margin-top:10px;"
-    >
-        + Add More Quantity
-    </button>
-
 </div>
 
 
@@ -1440,7 +1408,7 @@ button{
 <div class="card">
 
     <div class="question-title">
-        Discount <span class="required">*</span>
+        Discount 
     </div>
 
     <!-- DISCOUNT CONTAINER -->
@@ -1452,7 +1420,6 @@ button{
                 type="text"
                 name="selectiveDiscount[]"
                 placeholder="Enter Discount %"
-                class="selective-required"
                 style="
                     width:250px;
                     border:none;
@@ -1468,15 +1435,6 @@ button{
         </div>
 
     </div>
-
-    <!-- ADD BUTTON -->
-    <button 
-        type="button"
-        onclick="addDiscountField()"
-        style="margin-top:10px;"
-    >
-        + Add More Discount
-    </button>
 
 </div>
 
@@ -1588,7 +1546,8 @@ function showSelectiveSection() {
         f.required = false;
     });
 
-}/* =========================
+}
+/* =========================
    DISCOUNT SECTION
 ========================= */
 
@@ -1627,144 +1586,6 @@ function hideAmountBox() {
     ).style.display = "none";
 
 }
-
-/* =========================
-   BOOK LIST YEARWISE
-========================= */
-function updateBookList() {
-
-    // ONLY take year checkboxes from Selective Section
-    const checkedYears = document.querySelectorAll(
-        '#selectiveSection .yearCheckbox:checked'
-    );
-
-    const datalist = document.getElementById("bookList");
-
-    datalist.innerHTML = "";
-
-    let books = [];
-
-    checkedYears.forEach(function(yearBox){
-
-        const year = yearBox.value;
-
-        /* 2024 */
-        if(year === "2024") {
-
-            books.push(
-             "SB2100008-Book - Melange Collection",
-"SB2100009-Book - Luxe Boucle Collection",
-"SB2100010-Book - Saxon Collection",
-"SB2100011-Book - Satina Collection",
-"SB2100012-Book - Myth Collection",
-"SB2100013-Book - Locomotion",
-"SB2100014-Book - Earthen",
-"SB2100015-Book - Raffles",
-"SB2100016-Book - MATTE JACQUARDS I",
-"SB2100017-Book - MATTE JACQUARDS II",
-"SB2100018-Book - Serai",
-"SB2100019-Book - Earthwild",
-"SB2100020-Book - Esperance Wide",
-"SB2100021-Book - RITZ",
-"SB2100022-Book - Graphic Textures",
-"SB2100023-Book - THE WHITE WINDOW",
-"SB2100024-Book - NATURAL ESSENCE",
-"SB2100025-Book - ROSEWOOD",
-"SB2100026-ECO DIMOUT TEXTURES",
-"SB2100027-BUDGET BLACKOUT",
-"SB2100028-KNOCKOUT",
-"SB2100029-DAYDREAM",
-"SB2100030-MYSTIQUE",
-"SB2100031-SERENE SHEERS",
-"SB2100032-LUMINARA",
-"SB2100033-EDITION - I",
-"SB2100034-EDITION - II",
-"SB2100035-CONTRACT",
-"SB2100036-Tundra + Boucle",
-"SB2100038-MICHELIN WIDE"
-        );
-
-    }
-
-      /* 2025 */
-        else if(year === "2025") {
-
-            books.push(
-          "SB2100048-Book- MOONLIGHT",
-"SB2100049-Book - VERANDA",
-"SB2100050-Book - HOUSE BOUCLES",
-"SB2100051-Book - MAJESTIC",
-"SB2100052-Book - NATURAL JACQUARDS",
-"SB2100053-Book - OMEGA",
-"SB2100054-Book - LUNAR",
-"SB2100055-Book - MODERN TEXTURES",
-"SB2100056-Book - ECO BOUCLE SHEERS",
-"SB2100057-Book - INTEGRA",
-"SB2100058-Book - RUSSEL",
-"SB2100059-Book - LUSTRE",
-"SB2100060-Book- DIMOUT BLOOM",
-"SB2100061-Book- HERITAGE PRINTS",
-"SB2100062-Book- CHECKMATE",
-"SB2100063-Book- BUDGET JACQUARDS",
-"SB2100064-Book- MINIMALIST WIDE",
-"SB2100065-Book-MAYFAIR",
-"SB2100066-Book-ZEN",
-"SB2100067-Book-MAGNOLIA",
-"SB2100068-Book-METALLIC SATINS",
-"SB2100069-Book-MIST",
-"SB2100070-Book-ZODIAC",
-"SB2100071-Book-SKYLINE",
-"SB2100073-Book- SUNRISE",
-"SB2100072-HANGER- INTEGRA",
-"SB2100074-Book-GARDENIA",
-"SB2100088-Book - MATTE JACQUARDS III",
-"SB2100094-Book- MADISON",
-"SB2100095-Book- FABLES",
-"SB2100096-Book- LUXE VELVETS",
-"SB2100097-Book- TRIMLINE",
-"SB2100114-Book- AMAYA"
-
-        );
-
-    }
-
-     /* 2026 */
-        else if(year === "2026") {
-
-            books.push(
-          "SB2100092-Book- ALPEN",
-"SB2100093-Book- GRIT",
-"SB2100117-Book - LINO SHEERS",
-"SB2100118-Book- SATINA TEXTURES",
-"SB2100119-Book- BOUCLETTE",
-"SB2100120-Book- CARTIER",
-"SB2100121-Book- CONTEMPORARY JACQUARDS - I",
-"SB2100122-BOOK-CONTEMPORARY JACQUARDS - II",
-"SB2100123-Book- BALLERINA",
-"SB2100124-Book- CARLTON",
-"SB2100217-BOOK - BENCHMARK",
-"SB2100218-BOOK FLORA AND FAUNA",
-"SB2100251-BOOK CLIFDEN (2026-27 BOOKS SUBSCRIPTION)",
-"SB2100252-BOOK SLEEK SATIN",
-"SB2100253-BOOK ARTEA"
-        );
-
-        }
-
-    });
-
-     books.forEach(function(book){
-
-        const option = document.createElement("option");
-
-        option.value = book;
-
-        datalist.appendChild(option);
-
-    });
-
-}
-
 
 /* =========================
    CLEAR FORM
@@ -2220,6 +2041,24 @@ function addDiscountField() {
     container.appendChild(div);
 
 }
+
+
+function handleSubmit(e) {
+    e.preventDefault(); // stop default submit
+
+    // 👉 your existing submit logic (fetch / google script / etc.)
+
+    // after successful submit:
+    setTimeout(() => {
+        document.getElementById('bookingForm').reset();
+        hideDiscountOptions();
+        hideAmountBox();
+        document.getElementById('packageSection').style.display='none';
+        document.getElementById('selectiveSection').style.display='none';
+    }, 300);
+}
+
+
 </script>
 
 </body>
