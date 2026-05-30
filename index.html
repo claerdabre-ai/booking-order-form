@@ -322,16 +322,15 @@ button{
     <label>
         Book Type <span class="required">*</span>
     </label>
-
-   <div class="option">
+       <div class="option">
 
     <input 
         type="radio"
         name="booktype"
         value="Package Book"
         onclick="showPackageSection()"
-        required
-    >
+        required 
+       
 
     Package Book
 
@@ -1024,7 +1023,7 @@ button{
     <div class="option">
         <input 
     type="checkbox" 
-    class="yearCheckbox"
+    class="yearCheckbox package-required"
     name="year"
     value="2024"
 >
@@ -1071,6 +1070,7 @@ button{
                 name="quantity[]"
                 placeholder="Enter Quantity"
                 style="width:250px;"
+                class="package-required"
                 
             >
 
@@ -1104,6 +1104,7 @@ button{
             name="billing"
             value="Discount"
             onclick="showDiscountOptions(); hideAmountBox();"
+            class="package-required"
             
         >
         Discount (%)
@@ -1199,6 +1200,7 @@ button{
             name="billing"
             value="FOC"
             onclick="hideDiscountOptions(); hideAmountBox();"
+            class="package-required"
         >
         FOC
     </div>
@@ -1210,6 +1212,7 @@ button{
             name="billing"
             value="Full Bill"
             onclick="hideDiscountOptions(); hideAmountBox();"
+            class="package-required"
         >
         Full Bill
     </div>
@@ -1222,6 +1225,7 @@ button{
             name="billing"
             value="Certain AMT"
             onclick="showAmountBox(); hideDiscountOptions();"
+            class="package-required"
         >
         Certain Amt Bill
     </div>
@@ -1279,7 +1283,7 @@ button{
         </label>
     <input 
         type="text"
-        value="shrilaxmi.pasunuri@ddecor.com"
+        value="claerdabre@gmail.com"
         
         style="
             background:#f5f5f5;
@@ -1331,7 +1335,7 @@ button{
         <div class="option">
            <input 
         type="checkbox"
-        class="yearCheckbox"
+        class="yearCheckbox selective-required"
         value="2024"
         onchange="updateBookList()"
                 
@@ -1373,6 +1377,7 @@ button{
         id="bookInput"
         list="bookList"
         placeholder="Type book name..."
+        class="selective-required"
         
     >
 
@@ -1410,6 +1415,7 @@ button{
                 name="quantity[]"
                 placeholder="Enter Quantity"
                 style="width:250px;"
+                class="selective-required"
                 
             >
 
@@ -1445,6 +1451,7 @@ button{
                 type="text"
                 name="selectiveDiscount[]"
                 placeholder="Enter Discount %"
+                class="selective-required"
                 style="
                     width:250px;
                     border:none;
@@ -1500,7 +1507,7 @@ button{
 
         <input 
             type="text"
-            value="shrilaxmi.pasunuri@ddecor.com"
+            value="claerdabre@gmail.com"
             
             style="
                 background:#f5f5f5;
@@ -1895,6 +1902,37 @@ function addQuantityField() {
     container.appendChild(div);
 
 }
+
+document.getElementById("bookingForm").addEventListener("submit", function(e){
+
+    const packageSelected =
+        document.querySelector('input[name="booktype"]:checked')?.value === "Package Book";
+
+    const selectiveSelected =
+        document.querySelector('input[name="booktype"]:checked')?.value === "Selective Book";
+
+    if(packageSelected){
+        const years =
+            document.querySelectorAll('#packageSection .yearCheckbox:checked');
+
+        if(years.length === 0){
+            alert("Please select at least one Year.");
+            e.preventDefault();
+            return;
+        }
+    }
+
+    if(selectiveSelected){
+        const years =
+            document.querySelectorAll('#selectiveSection .yearCheckbox:checked');
+
+        if(years.length === 0){
+            alert("Please select at least one Year.");
+            e.preventDefault();
+            return;
+        }
+    }
+});
 
 
 window.addEventListener("DOMContentLoaded", function () {
