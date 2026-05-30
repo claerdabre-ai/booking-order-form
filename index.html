@@ -1563,32 +1563,32 @@ button{
 
 function showPackageSection() {
 
-    document.getElementById(
-        "packageSection"
-    ).style.display = "block";
+    document.getElementById("packageSection").style.display = "block";
+    document.getElementById("selectiveSection").style.display = "none";
 
-    document.getElementById(
-        "selectiveSection"
-    ).style.display = "none";
+    document.querySelectorAll(".package-required").forEach(f => {
+        f.required = true;
+    });
 
-    // CLEAR SELECTIVE BOOKS
-    selectedBooks = [];
-
-    renderBooks();
-
+    document.querySelectorAll(".selective-required").forEach(f => {
+        f.required = false;
+    });
 }
+
 function showSelectiveSection() {
 
-    document.getElementById(
-        "selectiveSection"
-    ).style.display = "block";
+    document.getElementById("selectiveSection").style.display = "block";
+    document.getElementById("packageSection").style.display = "none";
 
-    document.getElementById(
-        "packageSection"
-    ).style.display = "none";
+    document.querySelectorAll(".selective-required").forEach(f => {
+        f.required = true;
+    });
 
-}
-/* =========================
+    document.querySelectorAll(".package-required").forEach(f => {
+        f.required = false;
+    });
+
+}/* =========================
    DISCOUNT SECTION
 ========================= */
 
@@ -1986,6 +1986,12 @@ window.addEventListener("DOMContentLoaded", function () {
 document
 .getElementById("bookingForm")
 .addEventListener("submit", function(e){
+
+  if (!this.checkValidity()) {
+        this.reportValidity();
+        return;
+    }
+
 
     e.preventDefault();
 
