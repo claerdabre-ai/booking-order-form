@@ -358,53 +358,14 @@ button{
         <span class="required">*</span>
     </label>
 
-  <input 
-  type="text" 
-  id="salesInput" 
-  list="salesPersons" 
-  placeholder="Type sales person ID or name..." 
-  required
-  >
+ <input
+  type="text"
+  id="salesPerson"
+  list="salesList"
+  placeholder="Type sales person ID or name..."
+  required>
 
-
-
-    <datalist id="salesPersons">
-<option value="1480 - MAULIK GATHANI">
-<option value="1610 - HARI SHANKAR DUBEY">
-<option value="1689 - SAMIR GALA">
-<option value="1885 - SUDARSHAN BHANDARE">
-<option value="1893 - AIJAZ AHMED">
-<option value="1902 - HARSH TIWARI">
-<option value="1924 - LAVNISH VERMA">
-<option value="1933 - AKBAR SHAIKH">
-<option value="1955 - AMOL AMBOLE">
-<option value="1956 - VIPUL DUBEY">
-<option value="1957 - AMOL KORE">
-<option value="1958 - MINKESH AGARWAL">
-<option value="1968 - SANJEEV TRIPATHI">
-<option value="1969 - AWADHESH KUMAR">
-<option value="1970 - NITIN SHARMA">
-<option value="1971 - DEEPAK DADHICH">
-<option value="1973 - PRATIK KHAIRNAR">
-<option value="1997 - ANOOP KURUP">
-<option value="2002 - MANGESH KAWADE">
-<option value="2003 - AMAN SHARMA">
-<option value="2017 - PROMOTESH MONDAL">
-<option value="2018 - DHANRAJ YADAV">
-<option value="2019 - SARAJ AHMEAD">
-<option value="2047 - ASHISH BISHT">
-<option value="2048 - VIKRAM SHARMA">
-<option value="2051 - MOHIT SINGH">
-<option value="2053 - VARUN KUMAR JHA">
-<option value="2059 - RAJA NAIDU">
-<option value="2067 - MANISH SOLANKI">
-<option value="2068 - PRASHANT KUMAR">
-<option value="2070 - ALLABAKSH NADAF">
-<option value="2071 - RABIN SARMA">
-<option value="2077 - VISHESH SINGH">
-<option value="896 - KUNAL DESAI">
-
-</datalist>
+<datalist id="salesList"></datalist>
 <button 
     type="button"
     onclick="addSalesPerson()"
@@ -422,566 +383,15 @@ button{
         <span class="required">*</span>
     </label>
 
-    <input 
-        type="text"
-        id="customerInput"
-        list="customerList"
-        placeholder="Type customer code or customer name..."
-        required
-    >
+   <input
+  type="text"
+  id="customerName"
+  list="customerList"
+  placeholder="Type customer code or customer name..."
+  required>
 
-    <datalist id="customerList">
-<option value="0059900001 - HOME IDEAS CURTAIN FABRICS (AHMEDABAD)">
-<option value="0059900002 - HOME IDEAS CURTAIN FABRICS-KOLKATA">
-<option value="0059900003 - SJ ENTERPRISES">
-<option value="0059900004 - SHREENATHJI CLOTH TRADERS">
-<option value="0059900006 - HOME IDEAS CURTAIN FABRICS (BANDRA)">
-<option value="0059900005 - DRAPES AND TASSELS LLP - BORIVALI">
-<option value="0059900011 - DRAPES AND TASSELS LLP - DADAR">
-<option value="0059900012 - KISHORE">
-<option value="0059900016 - DDECOR EXPORTS PVT. LTD.-G7">
-<option value="0059900018 - CALIBER ENTERPRISES">
-<option value="0059900019 - SKIPPER TEXTILES PVT LTD (TOPSIA)">
-<option value="0059900020 - FLOATING WALLS PVT. LTD.">
-<option value="0059900022 - M B FURNISHING">
-<option value="0059900026 - B.F. FASHION PVT. LTD">
-<option value="0059900027 - LILA FURNISHING PVT.LTD">
-<option value="0059900028 - MAA SANTOSHI HANDLOOM">
-<option value="0059900031 - PRAVIN KUMAR & SONS.">
-<option value="0059900035 - ABACUS LIFESTYLE BRANDS PVT.LTD.- L">
-<option value="0059900037 - PETALS">
-<option value="0059900039 - SHAH SURAJMALL MAGARAJ & CO.">
-<option value="0059900042 - KEJALS FURNISHINGS LLP">
-<option value="0059900043 - CROWN TEXTILES">
-<option value="0059900044 - DECOR INDIA - UP">
-<option value="0059900046 - LALCHAND HASANAND">
-<option value="0059900047 - LUXUR & LAVISH - MUMBAI">
-<option value="0059900049 - LINENS N DRAPES">
-<option value="0059900050 - NOVELTY FURNISHING (BANDRA)">
-<option value="0059900051 - IN FASHION FURNISHINGS">
-<option value="0059900052 - INTERIA STYLE CREATIONS LLP">
-<option value="0059900054 - SHA MAGARAJ MANMAL AND COMPANY">
-<option value="0059900057 - PAREKH & CO.( A TO Z)(DADAR)">
-<option value="0059900059 - PARDA PLUS">
-<option value="0059900062 - SOHAN SALES">
-<option value="0059900063 - HARMONY FURNISHING">
-<option value="0059900065 - TIMES FURNISHING (ND)">
-<option value="0059900067 - RADHA FURNISHING">
-<option value="0059900069 - JAYDURGA FURNISHINGS PVT. LTD.">
-<option value="0059900070 - SUSHIL FURNISHINGS">
-<option value="0059900071 - FOAM PALACE TRADING(INDIA) PVT. LTD">
-<option value="0059900072 - NEW GRAH SHOBHA (INDORE)">
-<option value="0059900074 - YASH MULTIVENTURE PRIVATE LIMITED">
-<option value="0059900076 - GRH DESIGNER CONCEPTS">
-<option value="0059900077 - AMBEY FURNISHING">
-<option value="0059900078 - KINGS- MALAD">
-<option value="0059900079 - ARORA DRAPE">
-<option value="0059900080 - SHIV ENTERPRISE">
-<option value="0059900081 - SOURCE PRODUCTS & SERVICES">
-<option value="0059900086 - DREAM DECOR - KOLKATA">
-<option value="0059900087 - BEDDING EMPORIUM">
-<option value="0059900088 - FURNISTAA INFINITE SOURCING LLP">
-<option value="0059900089 - MODI ENTERPRISES">
-<option value="0059900090 - FOAMREX FURNISHINGS PVT. LTD.">
-<option value="0059900091 - GALLERY ONE">
-<option value="0059900092 - D.D. ENTERPRISES">
-<option value="0059900093 - DRAPES AND SPREADS">
-<option value="0059900094 - MALIK DECO HOUSE">
-<option value="0059900095 - ROYAL FURNISHING (ERNAKULAM)">
-<option value="0059900099 - N P PAREKH INC">
-<option value="0059900103 - KIRAN DECOR">
-<option value="0059900105 - KYRA FURNISHING">
-<option value="0059900108 - THE DECORA INCORPORATION">
-<option value="0059900109 - NEPTUNE HOUSE">
-<option value="0059900110 - DYNAMIC HOUSE">
-<option value="0059900115 - BELLA FURNISHING">
-<option value="0059900116 - VARMAS FURNISHING">
-<option value="0059900118 - HANDLOOM AGENCIES">
-<option value="0059900119 - THE INSIDER">
-<option value="0059900120 - K DECOR">
-<option value="0059900121 - SEVEN DESIGNS">
-<option value="0059900123 - KAPRA KOTHI FURNISHING">
-<option value="0059900124 - KRAFT">
-<option value="0059900126 - BENTEN VESTA">
-<option value="0059900127 - DRAPES AVENUE">
-<option value="0059900128 - MAHENDRA PRAKASH JAIN - BANGALORE">
-<option value="0059900132 - SALASAR CARPETS PVT LTD">
-<option value="0059900133 - BHAVANI FURNISHING">
-<option value="0059900134 - HARI OM FURNISHING HOUSE">
-<option value="0059900136 - OMTEX FURNISHING">
-<option value="0059900137 - VISTAR CONCEPTS INC">
-<option value="0059900138 - RIGHT CHOICE">
-<option value="0059900139 - KASHISH FURNISHING">
-<option value="0059900140 - AESHA SALES CORPORATION">
+<datalist id="customerList"></datalist>
 
-<option value="0059900151 - ARC TECHNOCON PRIVATE LIMITED">
-<option value="0059900152 - SOFTZONE">
-<option value="0059900153 - A TO Z LIFE STYLE (INDIA) PVT. LTD.">
-<option value="0059900154 - DRAPE SHOPPE - GUJRAT">
-<option value="0059900156 - PATEL TRADING CO.">
-<option value="0059900157 - RADIUS FURNISHING STUDIO">
-<option value="0059900158 - AAVARAN (BARODA)">
-<option value="0059900159 - CHAUHAN ENTERPRISE">
-<option value="0059900160 - RIDDHI CURTAIN HANDLOOM HOUSE">
-<option value="0059900161 - PREMCHAND FURNISHING">
-<option value="0059900162 - SSK FURNISHING - MP">
-<option value="0059900163 - KRISH">
-<option value="0059900164 - DARLA SALES & AGENCIES">
-<option value="0059900165 - LIFE STYLE FURNISHING (RAIPUR)">
-<option value="0059900166 - PARAPPATTU TRADING COMPANY">
-<option value="0059900167 - DECENT FLOOR & FURNISHING">
-<option value="0059900171 - SHEETAL DECOR">
-<option value="0059900172 - DEKORATE -AHMEDABAD">
-<option value="0059900173 - J.R. FURNISHING PVT. LTD.">
-<option value="0059900168 - DDECOR EXPORTS PVT. LTD.">
-<option value="0059900114 - PRASAD INTERIORS">
-<option value="0059900125 - VINIS RETAIL INDIA PVT.LTD.">
-<option value="0059900174 - SIENNA DECOR ESSENTIALS">
-<option value="0059900038 - BICHHONA CENTRE">
-<option value="0059900029 - MAA SHAKUMBHARI HANDLOOM">
-<option value="0059900145 - SHRI KRISHNA ENTERPRISES">
-<option value="0059900155 - DEEP CURTAINS & FURNISHING">
-<option value="0059900175 - PATNI TRADERS">
-<option value="0059900107 - HOME DECORE - SRINAGAR">
-<option value="0059900073 - ASHISH FOAMS AND FURNISHING">
-<option value="0059900024 - V9 FOAM AND FURNISHING - GUJRAT">
-<option value="0059900169 - FLOATING WALLS PVT. LTD. - JAIPUR">
-<option value="0059900176 - PRAVIN KUMAR & CO">
-<option value="0059900177 - SURESH HANDLOOM AND FURNISHINGS">
-<option value="0059900178 - THE HOME COLLECTION">
-<option value="0059900179 - CHEAP MATTING HOUSE PVT. LTD.">
-<option value="0059900181 - RAVECHI FURNISHINGS">
-<option value="0059900182 - KDL">
-<option value="0059900184 - DECOTEX">
-<option value="0059900185 - AKESHA- THANE">
-<option value="0059900186 - ARORA DRAPE - GUJARAT">
-<option value="0059900187 - DECCAN FABRICS PVT LTD">
-<option value="0059900188 - SNEHSHILP FABRICS PVT LTD">
-<option value="0059900189 - EASTERN DRAPE PVT. LTD">
-<option value="0059900190 - ALFA FURNISHINGS LLP">
-<option value="0059900183 - BOA CASA">
-<option value="0059900191 - HANSHABAHINI">
-<option value="0059900192 - LIFESTYLE FURNISHING PVT.LTD.">
-<option value="0059900193 - PEERLESS LIVING SPACE">
-<option value="0059900194 - VISHAL FURNISHINGS - KOLKATA">
-<option value="0059900195 - RAMA">
-<option value="0059900196 - HARYANA HANDLOOM (BHUVANESHWAR)">
-<option value="0059900198 - GURUKRUPA FURNISHING">
-<option value="0059900199 - ROWAN DECOR">
-<option value="0059900200 - SAPPHIRE RETAILS">
-<option value="0059900201 - MEGHNA FABRICS">
-<option value="0059900202 - HIRA HANDLOOM HOUSE - CHANDIGARH">
-<option value="0059900203 - RAM HANDLOOM EMPORIUM PVT.LTD.">
-<option value="0059900204 - NIRMAL DHARA FURNISHING">
-<option value="0059900205 - FURNISHING GALLERY - RISHIKESH">
-<option value="0059900206 - ARTIFY INTERIORS PRIVATE LIMITED">
-<option value="0059900207 - ELEGANT FOAM AND FURNISHING P.LTD.">
-<option value="0059900208 - CHAWLA ENTERPRISES">
-<option value="0059900209 - I DECOR FURNISHINGS">
-<option value="0059900210 - CHANDIRAM HOME LIFESTYLE">
-<option value="0059900211 - AMBICA HOUSE">
-<option value="0059900212 - KUBER HOME">
-<option value="0059900214 - GANPATI EXCLUSIVE">
-<option value="0059900215 - SANGRAH FURNITURE">
-<option value="0059900216 - DECENT FURNISHHINGS - PUNE">
-<option value="0059900217 - RAJANI SALES CORPORATION">
-<option value="0059900219 - ASHOKA FURNISHING- JAIPUR">
-<option value="0059900221 - AQUILA WOOD DESIGN">
-<option value="0059900222 - THAR LIFESTYLE PVT. LTD.">
-<option value="0059900223 - JAIN EMPORIEUM - PUNJAB">
-<option value="0059900224 - THEMES HOME FURNISHINGS">
-<option value="0059900225 - AKESHA FURNISHING -MULUND">
-<option value="0059900226 - JK DECOR - THANE">
-<option value="0059900227 - NOVELTY FURNISHINGS- BANDRA">
-<option value="0059900228 - NOVELTY FURNISHINGS- THANE">
-<option value="0059900229 - NOVELTY FURNISHINGS- MALAD">
-
-<option value="0059900605 - DDECOR HOME STORE LLP- JAIPUR">
-<option value="0059900606 - DDECOR HOME STORE LLP- PATNA">
-<option value="0059900607 - HI DECOR CURTAINS & BLINDS">
-<option value="0059900608 - SHADES- MUMBAI">
-<option value="0059900609 - BINDU DECORATORS">
-<option value="0059900594 - NANKANI JUTE HOUSE">
-<option value="0059900595 - SWANK">
-<option value="0059900611 - PRATAP HOME FURNISHING">
-<option value="0059900612 - COTTON ART">
-<option value="0059900613 - D ART AND DESIGN">
-<option value="0059900614 - JNS HOMES">
-<option value="0059900615 - T S R TEXTILES PRIVATE LIMITED">
-<option value="0059900616 - THE DRAPPER">
-<option value="0059900617 - K B TRADERS">
-<option value="0059900618 - CELEBRATION">
-<option value="0059900619 - ASHA & CO.">
-<option value="0059900620 - NAVJYOTI TEXTILES">
-<option value="0059900621 - M.K. GALLERY">
-<option value="0059900622 - SAJAVAT HOME DECOR">
-<option value="0059900623 - VIJAY HANDLOOM">
-<option value="0059900624 - EMKAY HOUSE">
-<option value="0059900625 - SOUTH SQUARE">
-<option value="0059900626 - NEW JAIN FURNISHING HOUSE">
-<option value="0059900628 - KAMLESH FOAM AND FURNISHING">
-<option value="0059900629 - GRAV FURNISHINGS">
-<option value="0059900630 - JAIN FURNISHING HOUSE- UP">
-<option value="0059900631 - STAR FURNISHING & FURNITURE">
-<option value="0059900632 - INSPIRATION TRADERS">
-<option value="0059900633 - MAHAVEER FURNISHING">
-<option value="0059900634 - SANKAT MOCHAN">
-<option value="0059900635 - ROHINI FURNISHINGS">
-<option value="0059900636 - DECO DEALS">
-<option value="0059900637 - TANISHQ DECOR">
-<option value="0059900638 - GOLDEN COLLECTION">
-<option value="0059900639 - DBR FURNISHINGS">
-<option value="0059900640 - SINGLA HANDLOOM STORE">
-<option value="0059900641 - SHRADHA ENTERPRISES">
-<option value="0059900642 - MOGLA HANDLOOM STORE">
-<option value="0059900643 - MANGALAM GALLERY">
-<option value="0059900644 - TINTS FURNISHINGS">
-<option value="0059900645 - RAJDHANI FURNISHING">
-<option value="0059900646 - RAMPURAWALA FURNISHINGS">
-<option value="0059900647 - COBALT LIFESTYLES">
-<option value="0059900648 - PARDA EMPORIUM">
-<option value="0059900650 - D ART EFFECTS">
-<option value="0059900651 - PURPLE PATCH STUDIO LLP">
-<option value="0059900652 - GOPIKA FURNISHING">
-<option value="0059900653 - STHAPATYA DECOR">
-<option value="0059900654 - HOMESARA DECOR">
-<option value="0059900655 - THAT BAAT">
-<option value="0059900656 - ROYAL CURTAIN HUB">
-<option value="0059900657 - THE FURNSTUDIO HOME FURNISHINGS">
-<option value="0059900658 - SHYAM FURNISHING">
-<option value="0059900659 - VINIS INDUSTRIES PRIVATE LIMITED">
-<option value="0059900660 - INTERIOR SOLUTIONS">
-<option value="0059900661 - KBN DESIGNS">
-<option value="0059900662 - TRIVENI FURNISHING">
-<option value="0059900663 - CANETEX">
-<option value="0059900666 - AMAR ENTERPRISES">
-<option value="0059900667 - ARORA HANDLOOM PVT. LTD.">
-<option value="0059900668 - SUMANU CREATION LLP">
-<option value="0059900664 - DECORONS TRINITY">
-<option value="0059900665 - R.R. MATRESSES">
-<option value="0059900672 - GOYAL TEXTILES">
-<option value="0059900669 - FLOOR & FURNISHING HOUSE">
-<option value="0059900627 - MAYUR REXINE HOUSE">
-<option value="0059900649 - MASTAN FURNISHING">
-<option value="0059900671 - B.MAHENDRA & BROTHERS">
-<option value="0059900610 - HEER DECOR">
-<option value="0059900676 - K. STORE">
-<option value="0059900677 - N.C. JINDAL & CO.">
-<option value="0059900678 - GOYAL INTERIORS GHARAUNDA">
-<option value="0059900679 - BETTER DEALS ELECTRONICS PVT. LTD.">
-<option value="0059900680 - DECOR KRAFT">
-<option value="0059900681 - BLISS HOME DECOR">
-<option value="0059900682 - ARIHANT DECOR">
-<option value="0059900684 - MALVI ENTERPRISES">
-<option value="0059900686 - THE WORLD OF DECOR">
-<option value="0059900687 - DHOLIYA DECOR LLP">
-<option value="0059900688 - QUALITY HOME">
-<option value="0059900689 - PANIPAT HANDLOOM">
-<option value="0059900683 - CLASSIC FURNISHING">
-<option value="0059900685 - SHEETAL HOME DECORS">
-<option value="0059900673 - BHAGWANS HANDLOOM & TRADERS">
-<option value="0059900674 - RAJU TEXTILES">
-<option value="0059900690 - KHURANA COTTON STORES">
-<option value="0059900691 - SHREE JAIN FURNISHING AND CARPET">
-<option value="0059900692 - NANDAN FURNISHING">
-<option value="0059900693 - LONDON LINE FURNISHINGS">
-<option value="0059900694 - WHITE LOFT HOME FURNISHING PVT. LTD.">
-<option value="0059900695 - EXPERIENCE CENTRE BY ATRIUM">
-<option value="0059900696 - BUILD MART">
-<option value="0059900697 - PALAK FURNISHING">
-<option value="0059900698 - DOSHY ENTERPRISES">
-<option value="0059900699 - MTC TEXTILE MFG CO">
-
-<option value="0059900982 - C.O. DECENT FURNISHHINGS">
-<option value="0059900994 - DECENT FLOOR AND FURNISHING">
-<option value="0059900995 - D DECOR HOME FABRICS-ANDHERI">
-<option value="0059900996 - D DECOR HOME FABRICS-THANE">
-<option value="0059900997 - D DECOR HOME FABRICS-CHENNAI">
-<option value="0059900998 - D DECOR HOME FABRICS-DELHI">
-<option value="0059900999 - D DECOR HOME FABRICS-HYDERABAD">
-<option value="0059901000 - D DECOR HOME FABRICS-PATNA">
-<option value="0059901001 - STHAPATYA HOME DECOR">
-<option value="0059901002 - D DECOR HOME FABRICS-BUND GARDEN">
-<option value="0059901003 - D DECOR HOME FABRICS-KARVE ROAD">
-<option value="0059901004 - S.R.CREATIONS">
-<option value="0059901005 - AANAND DECORZ">
-<option value="0059901006 - AVLON ENTERPRISE">
-<option value="0059901007 - D M CORPORATION">
-<option value="0059901008 - UNIQ DECOR AND FURNITURE">
-<option value="0059900983 - C.O. SKIPPER TEXTILES PVT LTD (TOPS">
-<option value="0059901009 - WONDER HOME">
-<option value="0059901010 - PARNAMI CORPORATION">
-<option value="0059901011 - SUNIL TEXTILE">
-<option value="0059901012 - SRI MALATESHA FURNISHING CENTRE">
-<option value="0059901013 - SHRI MAHAVIR INTERIOR">
-<option value="0059901014 - D DECOR HOME FABRICS- BANGALORE">
-<option value="0059901015 - D'ATELIER">
-<option value="0059901016 - SLEEK HOUSE OF INTERIOR">
-<option value="0059901017 - SHIVAM ENTERPRISES">
-<option value="0059901018 - PETALS FURNISHING">
-<option value="0059901019 - RAJKAMAL EMPORIUM">
-<option value="0059900985 - C.O. D ATELIER">
-<option value="0059901020 - MARWADI STORES EXTENSION">
-<option value="0059901021 - SHREE GAYATRI HANDLOOM HOUSE">
-<option value="0059901022 - JAY UMIYA HANDLOOM">
-<option value="0059901023 - SAHEB KRUPA BED LINEN">
-<option value="0059901024 - HARGUNDAS TANUMAL">
-<option value="0059901025 - MAHAVIR THE HOME STORE">
-<option value="0059901026 - KHURANA HANDLOOM EMPORIUM">
-<option value="0059901028 - SHYAMLA ENTERPRISES">
-<option value="0059901029 - KEJALS LINEN">
-<option value="0059901031 - C.O. MO DESIGNS PRIVATE LIMITED">
-<option value="0059901027 - ARVIND FOAM CENTRE">
-<option value="0059901030 - HAVENLEY FURNISHING">
-<option value="0059901036 - HANUMANT DECOR">
-<option value="0059901037 - LIVING SPACES">
-<option value="0059901038 - EXPORT HOUSE-DELHI">
-<option value="0059901039 - R.R. INTERIORS">
-<option value="0059901040 - DAMP 2 DECOR">
-<option value="0059901041 - SHRI SAGAS">
-<option value="0059901042 - SURPRISE HOUSE HOLD LINEN PVT LTD">
-<option value="0059901043 - TURKISH GLOBAL FURNISHING MALL">
-<option value="0059901032 - C.O.SKIPPER TEXTILES PVT LTD (TOPSI">
-<option value="0059901044 - MARVEL HOMES">
-<option value="0059901045 - PETALS LIFESTYLE">
-<option value="0059901033 - C.O.EXPORT HOUSE-DELHI">
-<option value="0059901046 - WISH HOME DECOR">
-<option value="0059901047 - JAIN CLOTH HOUSE">
-<option value="0059901048 - C.O. SAMBHAV ENTERPRISES">
-<option value="0059901049 - C.O. AUMBRE STORY LLP">
-<option value="0059901050 - FURNISHING HOUSE">
-<option value="0059901051 - D DECOR HOME FABRICS- JAIPUR">
-<option value="0059901052 - AMRIT HOME SAAZ">
-<option value="0059901054 - D ART EFFECTS- PITAMPURA">
-<option value="ECOM1 - ECOM one time customer Maharastra">
-<option value="0059901053 - HARE KRISHNA FURNISHING PVT. LTD.">
-<option value="ECOM2 - ECOM one time customer">
-<option value="AMAZONMH - Amazon">
-<option value="AMAZONOSMH - Amazon2">
-<option value="DDEWEBMH - D'Décor Web">
-<option value="DDEWEBOS - D'Décor Web2">
-<option value="FLIPKARTMH - Flipkart">
-<option value="FLIPKARTOS - Flipkart2">
-<option value="MYNTRAMH - Myntra">
-<option value="MYNTRAOSMH - Myntra2">
-<option value="NYKAAFAS1 - Nykaa fashion">
-<option value="NYKAAFAS2 - Nykaa fashion2">
-<option value="NYKAAMH - Nykaa">
-<option value="NYKAAOSMH - Nykaa2">
-<option value="SANSAARMH - Sansaar Web">
-<option value="SANSAAROS - Sansaar Web2">
-<option value="0059901034 - Sansaar Web Maharastra">
-<option value="0059901035 - Sansaar Web other state">
-<option value="0059901056 - Nykaa Maharastra">
-<option value="0059901057 - Nykaa Other States">
-<option value="0059901058 - Nykaa fashion Maharastra">
-<option value="0059901059 - Nykaa fashion Other States">
-<option value="0059901060 - Amazon Maharastra">
-<option value="0059901061 - Amazon Other States">
-<option value="0059901062 - D'Decor Web Mharastra">
-<option value="0059901063 - D'Decor Web Other States">
-<option value="0059901064 - Flipkart Maharastra">
-<option value="0059901065 - Flipkart Other states">
-<option value="0059901066 - Myntra Maharastra">
-<option value="0059901067 - Myntra Other states">
-<option value="0059901069 - GAJANAND TEXTILES">
-<option value="0059901068 - STRUCTURED LIVING">
-<option value="0059901071 - PASSION FURNISHINGS PVT. LTD.">
-<option value="0059901070 - C.O.AUMBRE STORY LLP">
-<option value="0059901076 - DECOR AND DECORS">
-<option value="0059901077 - DATTA HANDLOOM">
-<option value="0059901072 - R HOME">
-<option value="0059901073 - JK DECOR">
-<option value="0059901055 - SAAWARIYA INTERIOR & FURNISHERS">
-<option value="0059901074 - DRAPES N DECOR">
-<option value="0059901081 - CHHAYA HANDLOOM HOUSE">
-<option value="0059901082 - SHAH ENTERPRISE">
-<option value="0059901083 - AMARSONS COLLECTIONS">
-<option value="0059901084 - GIRISONS RETAILING PRIVATE LIMITED">
-<option value="0059901085 - C.O. STRUCTURED LIVING">
-<option value="0059901086 - MITTAL FURNISHING- DELHI">
-<option value="0059901087 - FAB CRAFT">
-<option value="0059901089 - MYTHILA">
-<option value="0059901090 - ESSENTIALS DECOR-PUNE">
-<option value="0059901088 - PARDA EMPORIUM- NEW DELHI">
-<option value="0059901079 - C.O.VINAYAK FURNISHING">
-<option value="0059901075 - DDECOR EXPORTS PVT. LTD.-EXPORT">
-<option value="0059901091 - MALI VEERAIAH AND SON">
-<option value="PLANT9901 - D' DECOR CURTAIN FABRICS LLP .">
-<option value="PLANT9910 - D DECOR CURTAIN FABRICS LLP .">
-<option value="0059901092 - STUDIO V">
-<option value="0059901093 - MAHALAXMI BEDCOVER LLP">
-<option value="0059901094 - SURBHI FURNISHING">
-<option value="0059901095 - PATTOO SONS">
-<option value="0059901096 - JANTA HOME FURNISHINGS">
-<option value="0059901097 - PRAKASH FOAM MART LLP">
-<option value="0059901098 - HANDLOOM CENTER- AHMEDABAD">
-<option value="0059901099 - M K TEXTILES">
-<option value="0059901100 - ROHIT FABRICS">
-<option value="0059901101 - FINE FURNISHERS">
-
-<option value="0059901245 - FE HOME TEXTILES LLP">
-<option value="0059901256 - C.O. KAY STORE">
-<option value="0059901257 - C.O. H.K. ENTERPRISES">
-<option value="0059901258 - C.O. SURESH HANDLOOM AND FURNISHING">
-<option value="0059901261 - C.O Zest & Nest">
-<option value="0059901262 - C.O.H.K. ENTERPRISES">
-<option value="0059901259 - C.O. H.K. ENTERPRISE">
-<option value="0059901263 - C.O. KRISHNA CURTAIN AND HANDLOOM">
-<option value="0059901264 - C.O.SAMBHAV ENTERPRISES">
-<option value="0059901268 - C.O. SHA SURAJMULL MAGARAJ & CO">
-<option value="0059901269 - C.O. M.K. GALLERY">
-<option value="0059901270 - C.O. TRILOK">
-<option value="0059901271 - C.O. Hajee Oomer Home Collections">
-<option value="0059901272 - C.O. DARLA SALES & AGENCIES">
-<option value="0059901273 - C.O SHAM FABRICS">
-<option value="0059901274 - KIRAN LIVING">
-<option value="0059901275 - C.O.ARTYZ DESIGNS PRIVATE LIMITED">
-<option value="0059901276 - C.O. ABACUS LIFESTYLE BRANDS PVT.LT">
-<option value="0059901277 - C.O PATNI TRADERS">
-<option value="0059901281 - MEC LOOM FURNISHING">
-<option value="0059901279 - C.O. AWARD FURNISHING">
-<option value="0059901280 - C.O. Shri Maruti Traders">
-<option value="0059901287 - C.O.AMBEY FURNISHING">
-<option value="0059901289 - C.O.GRH DESIGNER CONCEPTS">
-<option value="0059901290 - C.O.JAYDURGA FURNISHINGS PVT. LTD.">
-<option value="0059901292 - C.O.SHIVAAZ THE INTERIOR STUDIO">
-<option value="0059901293 - C.O. DECOR INDIA">
-<option value="0059901295 - C.O. THE HOME COLLECTION">
-<option value="0059901252 - HOME COLLECTION - DELHI">
-<option value="0059901297 - C.O HOME IDEAS CURTAIN FABRICS (AHM">
-<option value="0059901298 - C.O. ASHOKA FOAM">
-<option value="0059901282 - C.O H.K. ENTERPRISES">
-<option value="0059901299 - C.O. H.K. ENTERPRI">
-<option value="0059901253 - C.O H.K. ENTER">
-<option value="0059970001 - BRU TEXTILES NV">
-<option value="0059901283 - ALANKAR">
-<option value="0059901300 - C.O M B FURNISHING">
-<option value="0059901284 - THE KATLOG">
-<option value="0059901285 - HANDLOOM HERITAGE">
-<option value="0059901301 - C.O. Oza Enterprises">
-<option value="0059901303 - C.O. Aakarsan Home Plus">
-<option value="0059901306 - WAY FURNISHINGS">
-<option value="0059901307 - JAIN CROCKERY ARCADE">
-<option value="0059970002 - DEVLIN BLIND SUPPLIERS">
-<option value="0059901308 - CPM EXPORTS">
-<option value="0059901305 - C.O. DREAM DECOR - KOLKATA">
-<option value="0059901311 - C.O.ZEST & NEST">
-<option value="0059901313 - C.O. HOME STORIES">
-<option value="0059901317 - C.O. KUSHAL DECOR">
-<option value="0059901318 - C.O. HOME DECOR INTERIOR">
-<option value="0059901309 - SAI FURNISHINGS">
-<option value="0059901322 - C.O. FABIN FNF">
-<option value="0059901323 - C.O. C C HOME DECOR">
-<option value="0059901324 - C.O. KOTHARI ENTERPRISES">
-<option value="0059901326 - C.O. AFG LIFESTYLE PRIVATE LIMITED">
-<option value="0059901310 - SINGHAL TRADER">
-<option value="0059901327 - C.O.RUKMANI DECOR">
-<option value="0059901331 - PARAS DECOR & FURNISHINGS">
-<option value="0059901328 - C.O.LALCHAND HASANAND">
-<option value="0059901332 - SEAT SAFARI INDIA LLP">
-<option value="0059901333 - SHREE SAIRATNA FURNISHING">
-<option value="0059901334 - C.O. SHREE SAIRATNA FURNISHING">
-<option value="0059901335 - BOMBAY INTERIOR DECORATORS - BHATHI">
-<option value="0059901336 - ALL ABOUT FABRICS">
-<option value="0059901330 - C.O CHAUHAN ENTERPRISE">
-<option value="0059901342 - C.O. HOME IDEAS CURTAIN FABRICS (AH">
-<option value="0059901345 - C.O. SHA SURAJMULL MAGARAJ Seshadr">
-<option value="0059901337 - PRETFAB PRIVATE LIMITED">
-<option value="0059901338 - SRI VAARAHI CONSTRUCTIONS">
-<option value="0059901346 - C.O.IDEAL FRUNITURE- GOREGAON">
-<option value="0059901339 - DECOR AND COMFORT INDIA">
-<option value="0059901348 - C.O. URBAN HOME DECOR">
-<option value="0059901340 - P.GOEL & ASSOCIATES">
-<option value="0059901349 - C.O. SHEETAL DECOR">
-<option value="0059901224 - RAKESH MANDAL">
-<option value="0059901228 - KULDEEP GUPTA">
-<option value="0059901341 - ADORE FURNISHING_OLD">
-<option value="0059901361 - SHRI RAM HANDLOOM">
-<option value="0059901351 - ADORE FURNISHING">
-<option value="0059901362 - SHIVAM FASHION FABRICS">
-<option value="0059901363 - SIMRAN HOME DECOR">
-<option value="0059901364 - LOTUS">
-<option value="0059901365 - TULIP HANDLOOMS">
-<option value="0059901366 - THE HOUSE OF SHADES LLP">
-<option value="0059970003 - ACACIA FABRICS (VIETNAM) CO. LTD">
-<option value="0059901367 - R.K. EMPORIUM">
-<option value="0059901368 - KAPES WOOD CRAFT">
-<option value="0059901369 - PETALS INDIA">
-<option value="0059901370 - SHIVAM HANDLOOM EMPORIUM">
-<option value="0059901371 - LAXMI HOME DECORE AND AUTOMOBILE">
-<option value="0059970004 - HOME FABRICS">
-<option value="0059901373 - GLOBAL FOAM & FURNISHINGS">
-<option value="0059901374 - HARYANA HANDLOOM STUDIO">
-<option value="0059901375 - ROOTS DECOR INDIA PRIVATE LIMITED">
-<option value="0059901376 - THE DRAPING STUDIO">
-<option value="0059901377 - BHAVNA FURNISHING">
-<option value="0059901379 - FLOORS AND DRAPES">
-<option value="0059901378 - CHETAN LAXMI TEXTILE">
-<option value="0059901380 - TULIO TEXTILE MANUFACTURING PVT. LT">
-<option value="0059901382 - DREAM DECOR BOISAR">
-<option value="0059901381 - XYZ">
-<option value="0059901385 - SWASTIK INTERNATIONAL TEXTECH PRIVA">
-<option value="0059901386 - FABREA">
-<option value="0059970005 - ACACIA FABRICS SDN.BHD(MALAYSIA)">
-<option value="0059970006 - ACACIA FABRICS (THAILAND) CO.LTD">
-<option value="0059970007 - ACACIA FABRICS(SINGAPORE)PTE.LTD.">
-<option value="0059901387 - THE DECORA COLLECTIVE">
-<option value="0059901388 - LIFE STYLE HANDLOOM(LUDHIANA)">
-<option value="0059901389 - RESHMA MATTRESSES">
-<option value="0059901390 - SUNNY HANDLOOM">
-<option value="0059901391 - PANIPAT DECOR PRIVATE LIMITED">
-<option value="0059901392 - FURNISHING WONDERS">
-<option value="0059901395 - HOME DECOR - BENGALURU">
-<option value="0059901406 - FASHION POINT">
-<option value="0059901407 - DRAPES & DECOR - DEHRADUN">
-<option value="0059901409 - RAJESH & BROTHERS - NEW">
-<option value="0059901408 - RAVI">
-<option value="0059901410 - SIJO JOSEPH">
-<option value="0059901413 - GYAN HOME FURNISHING">
-<option value="0059901414 - PVN FURNISHINGS">
-<option value="0059901415 - STUDIO LUXE">
-<option value="0059901416 - J HOMES & BEYOND">
-<option value="0059901417 - DECOR INDIA FURNISHINGS">
-<option value="0059901418 - SAMSON SALES PRIVATE LIMITED">
-<option value="0059901420 - J.K MARKETING PEOPLE">
-<option value="0059901421 - DECO DREAMS FURNISHING PRIVATE LIMI">
-<option value="0059901419 - ********">
-<option value="0059901423 - FAB IDEAS">
-<option value="0059901424 - DYNAMIC LIVING HOME DECOR">
-<option value="0059901425 - KRISHNA CURTAIN AND HANDLOOM - NEW">
-<option value="0059901426 - SR FURNISHINGS">
-<option value="0059901427 - VIRENDRA & CO. FLOORCO">
-<option value="0059901422 - NIDHI">
-<option value="0059901430 - LAXMI FURNISHING">
-<option value="0059901431 - SHYAM FURNISHING-NAGAON">
-<option value="0059901433 - HOME FURNISHING">
-<option value="0059901434 - AGGARWAL THE HANDLOOM SHOP-DELHI">
-<option value="0059901435 - B.S.CHANNABASAPPA AND SONS">
-<option value="0059901436 - HOUSE OF HOME DECORE">
-<option value="0059901437 - CIVICGRID TECHNOLOGIES PRIVATE LIMI">
-<option value="0059901438 - AROKAH FURNISHING STUDIO">
-<option value="0059901439 - CLASSIC FURNISHERS">
-<option value="0059901440 - ANTHEM DESIGN SOLUTIONS LLP">
-<option value="0059901441 - BHALOTIA & COMPANY">
-<option value="0059901442 - GEETA FABRICS">
-<option value="0059901443 - EUREKA FURNISHINGS LLP">
-<option value="0059901444 - TANMAAY POLYTEX">
-<option value="0059901445 - LEELA SHREE">
-<option value="0059901446 - DECO DRAPES - NEW">
-<option value="0059901447 - VATIKA HOMES">
-<option value="0059901448 - SHREE JEE TRADERS">
-<option value="0059970013 - ILLUMIN8 FZE">
-<option value="0059901449 - SKY HIGH ENTERPRISES">
-<option value="0059901450 - UNIVERSAL SUPPLIERS">
-<option value="0059970014 - DEVLIN BLINDS SUPPLIERS PVT LTD">
-<option value="0059901451 - DIVINE HOME">
-<option value="0059970015 - BRU MIDDLE EAST FZE">
-<option value="0059901452 - ARK INTERIOR SOLUTIONS PRIVATE LIMI">
-<option value="0059901453 - DECOR HASSAN">
-<option value="0059901454 - KANISHKA ZENITH GLOBAL PRIVATE LIMI">
-
-</datalist>
 <button 
     type="button"
     onclick="addCustomer()"
@@ -1050,6 +460,18 @@ button{
 >
         2026
     </div>
+
+ <div class="option">
+        <input 
+    type="checkbox" 
+    class="yearCheckbox"
+    name="year"
+    value="Kit 2026"
+>
+        Kit 2026
+    </div>
+
+
 
 </div>
 
@@ -1960,6 +1382,47 @@ function addDiscountField() {
     container.appendChild(div);
 
 }
+
+
+google.script.run
+.withSuccessHandler(function(data){
+
+    const list =
+      document.getElementById("customerList");
+
+    data.forEach(row => {
+
+        const option =
+          document.createElement("option");
+
+        option.value =
+          row[1] + " - " + row[0];
+
+        list.appendChild(option);
+    });
+
+})
+
+.getCustomers();
+google.script.run
+.withSuccessHandler(function(data){
+
+    const list =
+      document.getElementById("salesList");
+
+    data.forEach(row => {
+
+        const option =
+          document.createElement("option");
+
+        option.value =
+          row[0];
+
+        list.appendChild(option);
+    });
+
+})
+.getSalesPersons();
 
 
 </script>
