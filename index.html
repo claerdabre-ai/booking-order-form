@@ -1290,27 +1290,37 @@ window.addEventListener("DOMContentLoaded", function () {
 
 function addSalesPerson() {
 
-    const newPerson = prompt(
-        "Enter New Sales Person Name"
+    const code =
+      prompt("Enter Sales Person Code");
+
+    if (!code) return;
+
+    const name =
+      prompt("Enter Sales Person Name");
+
+    if (!name) return;
+
+    fetch(
+      "https://script.google.com/macros/s/AKfycbzgnRUmIB22l-t9jzr56fYafN0fjymBg9yRzrlz7cEsJ7apkt6zOP0qtHdAAXQmCSZ2Gg/exec",
+      {
+        method: "POST",
+        mode: "no-cors",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          action: "addSalesPerson",
+          code: code,
+          name: name
+        })
+      }
     );
 
-    if(!newPerson) return;
-
-    const datalist =
-        document.getElementById("salesList");
-
-    const option =
-        document.createElement("option");
-
-    option.value = newPerson;
-
-    datalist.appendChild(option);
-
-    document.getElementById(
-        "salesPerson"
-    ).value = newPerson;
-
+    document.getElementById("salesPerson").value =
+      code + " - " + name;
 }
+
+
 
 /* =========================
    ADD NEW CUSTOMER
@@ -1318,27 +1328,36 @@ function addSalesPerson() {
 
 function addCustomer() {
 
-    const newCustomer = prompt(
-        "Enter New Customer Name"
+    const code =
+      prompt("Enter Customer Code");
+
+    if (!code) return;
+
+    const name =
+      prompt("Enter Customer Name");
+
+    if (!name) return;
+
+    fetch(
+      "https://script.google.com/macros/s/AKfycbzgnRUmIB22l-t9jzr56fYafN0fjymBg9yRzrlz7cEsJ7apkt6zOP0qtHdAAXQmCSZ2Gg/exec",
+      {
+        method: "POST",
+        mode: "no-cors",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          action: "addCustomer",
+          code: code,
+          name: name
+        })
+      }
     );
 
-    if(!newCustomer) return;
-
-    const datalist =
-        document.getElementById("customerList");
-
-    const option =
-        document.createElement("option");
-
-    option.value = newCustomer;
-
-    datalist.appendChild(option);
-
-    document.getElementById(
-        "customerName"
-    ).value = newCustomer;
-
+    document.getElementById("customerName").value =
+      name + " - " + code;
 }
+
 
 
 function addDiscountField() {
