@@ -1290,13 +1290,13 @@ window.addEventListener("DOMContentLoaded", function () {
 
 function addSalesPerson() {
 
-    const code =
-      prompt("Enter Sales Person Code (optional)") || "";
-
     const name =
       prompt("Enter Sales Person Name");
 
     if (!name) return;
+
+    const code =
+      prompt("Enter Sales Person Code (optional)") || "";
 
     fetch(
       "https://script.google.com/macros/s/AKfycbzgnRUmIB22l-t9jzr56fYafN0fjymBg9yRzrlz7cEsJ7apkt6zOP0qtHdAAXQmCSZ2Gg/exec",
@@ -1315,10 +1315,8 @@ function addSalesPerson() {
     );
 
     document.getElementById("salesPerson").value =
-      code + " - " + name;
+      code ? `${code} - ${name}` : name;
 }
-
-
 
 /* =========================
    ADD NEW CUSTOMER
@@ -1326,13 +1324,13 @@ function addSalesPerson() {
 
 function addCustomer() {
 
-    const code =
-      prompt("Enter Customer Code (optional)") || "";
-
     const name =
       prompt("Enter Customer Name");
 
     if (!name) return;
+
+    const code =
+      prompt("Enter Customer Code (optional)") || "";
 
     fetch(
       "https://script.google.com/macros/s/AKfycbzgnRUmIB22l-t9jzr56fYafN0fjymBg9yRzrlz7cEsJ7apkt6zOP0qtHdAAXQmCSZ2Gg/exec",
@@ -1351,9 +1349,8 @@ function addCustomer() {
     );
 
     document.getElementById("customerName").value =
-      name + " - " + code;
+      code ? `${name} - ${code}` : name;
 }
-
 
 
 function addDiscountField() {
