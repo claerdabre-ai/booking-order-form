@@ -1165,11 +1165,11 @@ window.addEventListener("DOMContentLoaded", function () {
                     'input[name="booktype"]:checked'
                 )?.value || "",
 
-            salesperson:
-                document.getElementById("salesInput").value,
+          salesperson:
+                document.getElementById("salesPerson").value,
 
-            customer:
-                document.getElementById("customerInput").value,
+         customer:
+                document.getElementById("customerName").value,
 
             year: Array.from(
                 document.querySelectorAll(
@@ -1296,7 +1296,7 @@ function addSalesPerson() {
     if(!newPerson) return;
 
     const datalist =
-        document.getElementById("salesPersons");
+        document.getElementById("salesList");
 
     const option =
         document.createElement("option");
@@ -1306,7 +1306,7 @@ function addSalesPerson() {
     datalist.appendChild(option);
 
     document.getElementById(
-        "salesInput"
+        "salesPerson"
     ).value = newPerson;
 
 }
@@ -1334,10 +1334,12 @@ function addCustomer() {
     datalist.appendChild(option);
 
     document.getElementById(
-        "customerInput"
+        "customerName"
     ).value = newCustomer;
 
 }
+
+
 function addDiscountField() {
 
     const container = document.getElementById(
@@ -1383,46 +1385,6 @@ function addDiscountField() {
 
 }
 
-
-google.script.run
-.withSuccessHandler(function(data){
-
-    const list =
-      document.getElementById("customerList");
-
-    data.forEach(row => {
-
-        const option =
-          document.createElement("option");
-
-        option.value =
-          row[1] + " - " + row[0];
-
-        list.appendChild(option);
-    });
-
-})
-
-.getCustomers();
-google.script.run
-.withSuccessHandler(function(data){
-
-    const list =
-      document.getElementById("salesList");
-
-    data.forEach(row => {
-
-        const option =
-          document.createElement("option");
-
-        option.value =
-          row[0];
-
-        list.appendChild(option);
-    });
-
-})
-.getSalesPersons();
 
 
 </script>
