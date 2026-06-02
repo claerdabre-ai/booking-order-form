@@ -1291,9 +1291,7 @@ window.addEventListener("DOMContentLoaded", function () {
 function addSalesPerson() {
 
     const code =
-      prompt("Enter Sales Person Code");
-
-    if (!code) return;
+      prompt("Enter Sales Person Code (optional)") || "";
 
     const name =
       prompt("Enter Sales Person Name");
@@ -1329,9 +1327,7 @@ function addSalesPerson() {
 function addCustomer() {
 
     const code =
-      prompt("Enter Customer Code");
-
-    if (!code) return;
+      prompt("Enter Customer Code (optional)") || "";
 
     const name =
       prompt("Enter Customer Name");
