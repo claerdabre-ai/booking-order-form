@@ -1282,6 +1282,36 @@ window.addEventListener("DOMContentLoaded", function () {
 });
 
 
+function getCustomers() {
+
+  const masterSS =
+    SpreadsheetApp.openById(MASTER_SHEET_ID);
+
+  const sheet =
+    masterSS.getSheetByName("Cust. List");
+
+  return sheet
+    .getDataRange()
+    .getValues()
+    .slice(1);
+}
+
+
+function getSalesPersons() {
+
+  const masterSS =
+    SpreadsheetApp.openById(MASTER_SHEET_ID);
+
+  const sheet =
+    masterSS.getSheetByName("Sales person List");
+
+  return sheet
+    .getDataRange()
+    .getValues()
+    .slice(1);
+}
+
+
 
 /* =========================
    ADD NEW SALES PERSON
