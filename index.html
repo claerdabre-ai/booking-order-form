@@ -1282,35 +1282,6 @@ window.addEventListener("DOMContentLoaded", function () {
 });
 
 
-function getCustomers() {
-
-  const masterSS =
-    SpreadsheetApp.openById(MASTER_SHEET_ID);
-
-  const sheet =
-    masterSS.getSheetByName("Cust. List");
-
-  return sheet
-    .getDataRange()
-    .getValues()
-    .slice(1);
-}
-
-
-function getSalesPersons() {
-
-  const masterSS =
-    SpreadsheetApp.openById(MASTER_SHEET_ID);
-
-  const sheet =
-    masterSS.getSheetByName("Sales person List");
-
-  return sheet
-    .getDataRange()
-    .getValues()
-    .slice(1);
-}
-
 
 
 /* =========================
@@ -1416,6 +1387,54 @@ function addDiscountField() {
 }
 
 
+window.addEventListener("DOMContentLoaded", loadMasterData);
+
+function loadMasterData() {
+
+  const URL =
+    "https://script.google.com/macros/s/AKfycbzgnRUmIB22l-t9jzr56fYafN0fjymBg9yRzrlz7cEsJ7apkt6zOP0qtHdAAXQmCSZ2Gg/exec";
+
+  // Customers
+  fetch(URL + "?type=customers")
+    .then(r => r.json())
+    .then(data => {
+
+      const list =
+        document.getElementById("customerList");
+
+      data.forEach(row => {
+
+        const option =
+          document.createElement("option");
+
+        option.value =
+          row[0];
+
+        list.appendChild(option);
+      });
+    });
+
+  // Sales Persons
+  fetch(URL + "?type=sales")
+    .then(r => r.json())
+    .then(data => {
+
+      const list =
+        document.getElementById("salesList");
+
+      data.forEach(row => {
+
+        const option =
+          document.createElement("option");
+
+        option.value =
+          row[0];
+
+        list.appendChild(option);
+      });
+    });
+
+}
 
 </script>
 
