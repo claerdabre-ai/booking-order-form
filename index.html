@@ -1036,20 +1036,6 @@ document.getElementById("bookingForm").addEventListener("submit", function(e) {
         }
     }
 
-    // Selective Book selected
-    if (document.querySelector('input[name="booktype"]:checked')?.value === "Selective Book") {
-
-        const years = document.querySelectorAll(
-            '#selectiveSection .yearCheckbox:checked'
-        );
-
-        if (years.length === 0) {
-            e.preventDefault();
-            alert("Please select at least one Year.");
-            return;
-        }
-    }
-
 });
 
 
