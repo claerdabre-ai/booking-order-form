@@ -503,7 +503,7 @@ button{
 
 </div>
 
-   <!-- BILLING OPTION -->
+  <!-- BILLING OPTION -->
 <div class="card">
 
     <label>
@@ -513,128 +513,121 @@ button{
 
     <!-- DISCOUNT -->
     <div class="billing-option">
-        <input 
-            type="radio" 
+        <input
+            type="radio"
             name="billing"
             value="Discount"
             onclick="showDiscountOptions(); hideAmountBox();"
             class="package-required"
-            
         >
         Discount (%)
     </div>
 
-    <!-- DISCOUNT TEXTBOX -->
-<div 
-    id="discountOptions" 
-    style="
-        display:none;
-        margin-left:40px;
-        margin-top:20px;
-    "
->
+    <!-- DISCOUNT OPTIONS -->
+    <div
+        id="discountOptions"
+        style="
+            display:none;
+            margin-left:40px;
+            margin-top:20px;
+        "
+    >
 
-    <!-- 1st Discount -->
-    <div style="margin-bottom:20px;">
+        <!-- 2024 Discount -->
+        <div style="margin-bottom:20px;">
+            <label style="font-size:18px;">
+                2024 Year Discount %
+            </label>
 
-        <label style="font-size:18px;">
-            2024 Year Discount %
-        </label>
+            <input
+                type="number"
+                id="discount2024"
+                placeholder="Enter 2024 Discount %"
+                style="
+                    width:250px;
+                    border:none;
+                    border-bottom:1px solid #999;
+                    font-size:18px;
+                    padding:10px 0;
+                    outline:none;
+                    background:transparent;
+                "
+            >
+        </div>
 
-        <input 
-            type="number"
-            id="discount2024"
-            placeholder="Enter 2024 Discount %"
-            style="
-                width:250px;
-                border:none;
-                border-bottom:1px solid #999;
-                font-size:18px;
-                padding:10px 0;
-                outline:none;
-                background:transparent;
-            "
-        >
+        <!-- 2025 Discount -->
+        <div style="margin-bottom:20px;">
+            <label style="font-size:18px;">
+                2025 Year Discount %
+            </label>
 
-    </div>
+            <input
+                type="number"
+                id="discount2025"
+                placeholder="Enter 2025 Discount %"
+                style="
+                    width:250px;
+                    border:none;
+                    border-bottom:1px solid #999;
+                    font-size:18px;
+                    padding:10px 0;
+                    outline:none;
+                    background:transparent;
+                "
+            >
+        </div>
 
-    <!-- 2nd Discount -->
-    <div style="margin-bottom:20px;">
+        <!-- 2026 Discount -->
+        <div style="margin-bottom:20px;">
+            <label style="font-size:18px;">
+                2026 Year Discount %
+            </label>
 
-        <label style="font-size:18px;">
-            2025 Year Discount %
-        </label>
+            <input
+                type="number"
+                id="discount2026"
+                placeholder="Enter 2026 Discount %"
+                style="
+                    width:250px;
+                    border:none;
+                    border-bottom:1px solid #999;
+                    font-size:18px;
+                    padding:10px 0;
+                    outline:none;
+                    background:transparent;
+                "
+            >
+        </div>
 
-        <input 
-            type="number"
-            id="discount2025"
-            placeholder="Enter 2025 Discount %"
-            style="
-                width:250px;
-                border:none;
-                border-bottom:1px solid #999;
-                font-size:18px;
-                padding:10px 0;
-                outline:none;
-                background:transparent;
-            "
-        >
+        <!-- 2026 Kit Discount -->
+        <div style="margin-bottom:20px;">
+            <label style="font-size:18px;">
+                2026 Kit Year Discount %
+            </label>
 
-    </div>
-
-    <!-- 3rd Discount -->
-    <div style="margin-bottom:20px;">
-
-        <label style="font-size:18px;">
-            2026 Year Discount %
-        </label>
-
-        <input 
-            type="number"
-            id="discount2026"
-            placeholder="Enter 2026 Discount %"
-            style="
-                width:250px;
-                border:none;
-                border-bottom:1px solid #999;
-                font-size:18px;
-                padding:10px 0;
-                outline:none;
-                background:transparent;
-            "
-        >
-
-    </div>
-
-         <!-- 4rd Discount -->
-    <div style="margin-bottom:20px;">
-
-        <label style="font-size:18px;">
-            2026 Kit Year Discount %
-        </label>
-
-        <input 
-            type="number"
-            id="discount2026Kit"
-            placeholder="Enter 2026 Kit Discount %"
-            style="
-                width:250px;
-                border:none;
-                border-bottom:1px solid #999;
-                font-size:18px;
-                padding:10px 0;
-                outline:none;
-                background:transparent;
-            "
-        >
+            <input
+                type="number"
+                id="discount2026Kit"
+                placeholder="Enter 2026 Kit Discount %"
+                style="
+                    width:250px;
+                    border:none;
+                    border-bottom:1px solid #999;
+                    font-size:18px;
+                    padding:10px 0;
+                    outline:none;
+                    background:transparent;
+                "
+            >
+        </div>
 
     </div>
+    <!-- END discountOptions -->
 
-
-       <!-- FOC -->
+    <!-- FOC -->
     <div class="billing-option">
-        <input 
-            type="radio" 
+        <input
+            type="radio"
             name="billing"
             value="FOC"
             onclick="hideDiscountOptions(); hideAmountBox();"
@@ -645,8 +638,8 @@ button{
 
     <!-- FULL BILL -->
     <div class="billing-option">
-        <input 
-            type="radio" 
+        <input
+            type="radio"
             name="billing"
             value="Full Bill"
             onclick="hideDiscountOptions(); hideAmountBox();"
@@ -655,11 +648,11 @@ button{
         Full Bill
     </div>
 
-    <!-- CERTAIN AMT BILL -->
+    <!-- CERTAIN AMOUNT BILL -->
     <div class="billing-option">
-        <input 
+        <input
             id="certainAmount"
-            type="radio" 
+            type="radio"
             name="billing"
             value="Certain AMT"
             onclick="showAmountBox(); hideDiscountOptions();"
@@ -668,8 +661,8 @@ button{
         Certain Amt Bill
     </div>
 
-    <!-- AMOUNT TEXTBOX -->
-    <div 
+    <!-- AMOUNT BOX -->
+    <div
         id="amountBox"
         style="
             display:none;
@@ -678,8 +671,9 @@ button{
         "
     >
 
-        <input 
+        <input
             type="number"
+            id="amount"
             placeholder="Enter Amount"
             style="
                 width:250px;
@@ -695,7 +689,6 @@ button{
     </div>
 
 </div>
-   
     <!-- COMMENT -->
     <div class="card">
 
