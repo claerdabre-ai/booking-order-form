@@ -543,7 +543,7 @@ button{
 
         <input 
             type="number"
-            id="discount1"
+            id="discount2024"
             placeholder="Enter 2024 Discount %"
             style="
                 width:250px;
@@ -567,7 +567,7 @@ button{
 
         <input 
             type="number"
-            id="discount2"
+            id="discount2025"
             placeholder="Enter 2025 Discount %"
             style="
                 width:250px;
@@ -591,8 +591,28 @@ button{
 
         <input 
             type="number"
-            id="discount3"
+            id="discount2026"
             placeholder="Enter 2026 Discount %"
+            style="
+                width:250px;
+                border:none;
+                border-bottom:1px solid #999;
+                font-size:18px;
+                padding:10px 0;
+                outline:none;
+                background:transparent;
+            "
+        >
+
+    </div>
+        <label style="font-size:18px;">
+           Kit 2026 Year Discount %
+        </label>
+
+        <input 
+            type="number"
+            id="discount 2026 Kit"
+            placeholder="Enter Kit 2026 Discount %"
             style="
                 width:250px;
                 border:none;
@@ -739,45 +759,6 @@ button{
 
     </div>
 
-    <!-- YEAR -->
-    <div class="card">
-
-        <div class="question-title">
-            Year <span class="required">*</span>
-        </div>
-
-        <div class="option">
-           <input 
-        type="checkbox"
-        class="yearCheckbox"
-        value="2024"
-        
-                
-            >
-            2024
-        </div>
-
-        <div class="option">
-           <input 
-        type="checkbox"
-        class="yearCheckbox"
-        value="2025"
-        
-                            >
-            2025
-        </div>
-
-        <div class="option">
-           <input 
-        type="checkbox"
-        class="yearCheckbox"
-        value="2026"
-        
-                            >
-            2026
-        </div>
-
-    </div>
 
     <!-- BOOK NAME -->
    <div class="card" id="bookSection">
@@ -1202,14 +1183,17 @@ window.addEventListener("DOMContentLoaded", function () {
                     'input[name="billing"]:checked'
                 )?.value || "",
 
-            discount1:
-                document.getElementById("discount1")?.value || "",
+            discount2024:
+                document.getElementById("discount2024")?.value || "",
 
-            discount2:
-                document.getElementById("discount2")?.value || "",
+            discount2025:
+                document.getElementById("discount2025")?.value || "",
 
-            discount3:
-                document.getElementById("discount3")?.value || "",
+            discount2026:
+                document.getElementById("discount2026")?.value || "",
+
+            discount2026Kit:
+                document.getElementById("discount2026Kit")?.value || "",
 
             selectiveDiscount: Array.from(
                 document.querySelectorAll(
