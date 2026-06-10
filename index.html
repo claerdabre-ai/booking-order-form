@@ -1121,20 +1121,7 @@ window.addEventListener("DOMContentLoaded", function () {
             }
         }
 
-        /* Selective validation */
-        if (
-            document.querySelector('input[name="booktype"]:checked')?.value === "Selective Book"
-        ) {
-            const years = document.querySelectorAll(
-                '#selectiveSection .yearCheckbox:checked'
-            );
-
-            if (years.length === 0) {
-                alert("Please select at least one Year.");
-                return;
-            }
-        }
-
+        
        
         const data = {
 
