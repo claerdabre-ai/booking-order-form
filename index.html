@@ -1065,21 +1065,27 @@ function checkSalesEmail() {
         x => x.name.trim().toLowerCase() === selected.trim().toLowerCase()
     );
 
-    if (person && person.email) {
-
-    packageEmailCard.style.display = "none";
-    selectiveEmailCard.style.display = "none";
+   if (person && person.email) {
 
     packageEmail.value = person.email;
     selectiveEmail.value = person.email;
 
+    packageEmailCard.style.display = "none";
+    selectiveEmailCard.style.display = "none";
+
     packageEmail.required = false;
     selectiveEmail.required = false;
+
+    packageEmail.disabled = true;
+    selectiveEmail.disabled = true;
 
 } else {
 
     packageEmailCard.style.display = "block";
     selectiveEmailCard.style.display = "block";
+
+    packageEmail.disabled = false;
+    selectiveEmail.disabled = false;
 
     packageEmail.value = "";
     selectiveEmail.value = "";
