@@ -1058,8 +1058,7 @@ function hideAmountBox() {
 
 function checkSalesEmail() {
 
-    const selected =
-        document.getElementById("salesPerson").value;
+    const selected = document.getElementById("salesPerson").value;
 
     const person = salesPersons.find(
         x => x.name.trim().toLowerCase() === selected.trim().toLowerCase()
@@ -1067,29 +1066,36 @@ function checkSalesEmail() {
 
     if (person && person.email) {
 
-    packageEmailCard.style.display = "none";
-    selectiveEmailCard.style.display = "none";
+        packageEmailCard.style.display = "none";
+        selectiveEmailCard.style.display = "none";
 
-    packageEmail.value = person.email;
-    selectiveEmail.value = person.email;
+        packageEmail.value = person.email;
+        selectiveEmail.value = person.email;
 
-    packageEmail.required = false;
-    selectiveEmail.required = false;
+        packageEmail.required = false;
+        selectiveEmail.required = false;
 
-} else {
+    } else {
 
-    packageEmailCard.style.display = "block";
-    selectiveEmailCard.style.display = "block";
+        packageEmail.value = "";
+        selectiveEmail.value = "";
 
-    packageEmail.value = "";
-    selectiveEmail.value = "";
+        if (bookingType.value === "PACKAGE") {
+            packageEmailCard.style.display = "block";
+            selectiveEmailCard.style.display = "none";
 
-    packageEmail.required = true;
-    selectiveEmail.required = true;
+            packageEmail.required = true;
+            selectiveEmail.required = false;
+
+        } else if (bookingType.value === "SELECTIVE") {
+            packageEmailCard.style.display = "none";
+            selectiveEmailCard.style.display = "block";
+
+            packageEmail.required = false;
+            selectiveEmail.required = true;
+        }
+    }
 }
-
-}
-
 
 
 /* =========================
