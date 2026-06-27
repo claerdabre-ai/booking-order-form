@@ -382,11 +382,13 @@ button{
     </label>
 
  <input
-  type="text"
-  id="salesPerson"
-  list="salesList"
-  placeholder="Type sales person ID or name..."
-  required>
+    type="text"
+    id="salesPerson"
+    list="salesList"
+    placeholder="Type sales person ID or name..."
+    oninput="checkSalesEmail()"
+    required
+>
 
 <datalist id="salesList"></datalist>
 <button 
@@ -983,29 +985,34 @@ function showPackageSection() {
     document.getElementById("packageSection").style.display = "block";
     document.getElementById("selectiveSection").style.display = "none";
 
-    document.querySelectorAll(".package-required").forEach(f => {
+    document.querySelectorAll(".package-required").forEach(f=>{
         f.required = true;
     });
 
-    document.querySelectorAll(".selective-required").forEach(f => {
+    document.querySelectorAll(".selective-required").forEach(f=>{
         f.required = false;
     });
-}
 
+    checkSalesEmail();
+
+}
 function showSelectiveSection() {
 
     document.getElementById("selectiveSection").style.display = "block";
     document.getElementById("packageSection").style.display = "none";
 
-    document.querySelectorAll(".selective-required").forEach(f => {
+    document.querySelectorAll(".selective-required").forEach(f=>{
         f.required = true;
     });
 
-    document.querySelectorAll(".package-required").forEach(f => {
+    document.querySelectorAll(".package-required").forEach(f=>{
         f.required = false;
     });
 
+    checkSalesEmail();
+
 }
+
 /* =========================
    DISCOUNT SECTION
 ========================= */
@@ -1058,44 +1065,42 @@ function hideAmountBox() {
 
 function checkSalesEmail() {
 
-    const selected =
-        document.getElementById("salesPerson").value;
+    const packageEmailCard = document.getElementById("packageEmailCard");
+    const selectiveEmailCard = document.getElementById("selectiveEmailCard");
 
-    const person = salesPersons.find(
-        x => x.name.trim().toLowerCase() === selected.trim().toLowerCase()
+    const packageEmail = document.getElementById("packageEmail");
+    const selectiveEmail = document.getElementById("selectiveEmail");
+
+    const entered = document.getElementById("salesPerson").value.trim().toLowerCase();
+
+    const person = salesPersons.find(x =>
+        x.name.trim().toLowerCase() === entered ||
+        `${x.code} - ${x.name}`.trim().toLowerCase() === entered
     );
 
-   if (person && person.email) {
+    if (person) {
+        // Existing salesperson
+        packageEmail.value = person.email || "";
+        selectiveEmail.value = person.email || "";
 
-    packageEmail.value = person.email;
-    selectiveEmail.value = person.email;
+        packageEmailCard.style.display = "none";
+        selectiveEmailCard.style.display = "none";
+    } else if (entered !== "") {
+        // New salesperson
+        packageEmail.value = "";
+        selectiveEmail.value = "";
 
-    packageEmailCard.style.display = "none";
-    selectiveEmailCard.style.display = "none";
+        packageEmailCard.style.display = "block";
+        selectiveEmailCard.style.display = "block";
+    } else {
+        // Empty field
+        packageEmail.value = "";
+        selectiveEmail.value = "";
 
-    packageEmail.required = false;
-    selectiveEmail.required = false;
-
-    packageEmail.disabled = true;
-    selectiveEmail.disabled = true;
-
-} else {
-
-    packageEmailCard.style.display = "block";
-    selectiveEmailCard.style.display = "block";
-
-    packageEmail.disabled = false;
-    selectiveEmail.disabled = false;
-
-    packageEmail.value = "";
-    selectiveEmail.value = "";
-
-    packageEmail.required = true;
-    selectiveEmail.required = true;
+        packageEmailCard.style.display = "none";
+        selectiveEmailCard.style.display = "none";
+    }
 }
-
-}
-
 
 
 /* =========================
@@ -1359,32 +1364,33 @@ window.addEventListener("DOMContentLoaded", function () {
    ADD NEW SALES PERSON
 ========================= */
 
-function addSalesPerson() {
+const name = prompt("Enter Sales Person Name");
+if (!name) return;
 
-    const name =
-      prompt("Enter Sales Person Name");
+const code = prompt("Enter Sales Person Code (optional)") || "";
 
-    if (!name) return;
+const email = prompt("Enter Sales Person Email");
+if (!email) {
+    alert("Email is required.");
+    return;
+}
 
-    const code =
-      prompt("Enter Sales Person Code (optional)") || "";
-
-    fetch(
-      "https://script.google.com/macros/s/AKfycbzgnRUmIB22l-t9jzr56fYafN0fjymBg9yRzrlz7cEsJ7apkt6zOP0qtHdAAXQmCSZ2Gg/exec",
-      {
-        method: "POST",
-        mode: "no-cors",
-        headers: {
-          "Content-Type": "application/json"
+fetch(
+    "https://script.google.com/macros/s/AKfycbzgnRUmIB22l-t9jzr56fYafN0fjymBg9yRzrlz7cEsJ7apkt6zOP0qtHdAAXQmCSZ2Gg/exec",
+    {
+        method:"POST",
+        mode:"no-cors",
+        headers:{
+            "Content-Type":"application/json"
         },
-        body: JSON.stringify({
-          action: "addSalesPerson",
-          code: code,
-          name: name
+        body:JSON.stringify({
+            action:"addSalesPerson",
+            code:code,
+            name:name,
+            email:email
         })
-      }
-    );
-
+    }
+);
     document.getElementById("salesPerson").value =
       code ? `${code} - ${name}` : name;
     checkSalesEmail();
@@ -1518,11 +1524,18 @@ function loadMasterData() {
     data.forEach(item => {
 
         const option = document.createElement("option");
-        option.value = item.name;
+        option.value =
+           item.code
+               ? `${item.code} - ${item.name}`
+               : item.name;
         list.appendChild(option);
 
     });
 
+  const salesInput = document.getElementById("salesPerson");
+
+    salesInput.addEventListener("change", checkSalesEmail);
+    salesInput.addEventListener("input", checkSalesEmail);
    });
 
 
