@@ -1080,14 +1080,14 @@ function checkSalesEmail() {
         packageEmail.value = "";
         selectiveEmail.value = "";
 
-        if (bookingType.value === "PACKAGE") {
+        if (bookingType.value === "Package Book") {
             packageEmailCard.style.display = "block";
             selectiveEmailCard.style.display = "none";
 
             packageEmail.required = true;
             selectiveEmail.required = false;
 
-        } else if (bookingType.value === "SELECTIVE") {
+        } else if (bookingType.value === "Selective Book") {
             packageEmailCard.style.display = "none";
             selectiveEmailCard.style.display = "block";
 
