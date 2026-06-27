@@ -2,7 +2,9 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
 
 <title>BOOK Ordering Form</title>
 
@@ -77,6 +79,7 @@ label{
 
 /* INPUTS */
 input[type="text"],
+input[type="email"],
 textarea{
     width:50%;
     border:none;
@@ -89,8 +92,13 @@ textarea{
 
 textarea{
     width:85%;
-    min-height:40px;
+    min-height:30px;
     resize:none;
+}
+
+#discountOptions label{
+    display:block;
+    margin-bottom:15px !important;
 }
 
 /* QUESTION TITLE */
@@ -200,7 +208,7 @@ button{
     .question-title,
     .top-title{
         font-size:18px;
-        margin-bottom:25px;
+        margin-bottom:20px;
     }
 
     .option,
@@ -216,6 +224,7 @@ button{
     }
 
     input[type="text"],
+    input[type="email"],
     input[type="number"],
     textarea{
         width:100% !important;
@@ -246,6 +255,12 @@ button{
         line-height:1.6;
     }
 
+#discountOptions label{
+    display:block;
+    margin-bottom:20px !important;
+}
+
+
     #discountOptions,
     #amountBox{
         margin-left:0 !important;
@@ -259,6 +274,14 @@ button{
     #selectedBooks div{
         font-size:15px;
         word-break:break-word;
+    }
+
+}
+
+@media screen and (max-width:768px){
+
+    .clear-form-link{
+        margin-left:15px;
     }
 
 }
@@ -414,15 +437,30 @@ button{
     </div>
 
     <!-- PACKAGE BOOK -->
-    <div class="card">
+<div class="card">
 
-        <div class="top-title">
-            Package Book
-        </div>
-
-       
-
+    <div class="top-title">
+        Package Book
     </div>
+
+</div>
+
+<!-- PACKAGE EMAIL -->
+<div class="card" id="packageEmailCard" style="display:none;">
+
+    <label>
+        SALES-PERSON EMAIL ID
+        <span class="required">*</span>
+    </label>
+
+    <input
+        type="email"
+        id="packageEmail"
+        placeholder="SALES-PERSON EMAIL ID"
+        class="package-required"
+    >
+
+</div>
 
    <!-- YEAR -->
 <div class="card">
@@ -489,11 +527,13 @@ button{
         <div style="margin-bottom:25px;">
 
             <input 
-                type="number"
+                type="text"
                 name="quantity[]"
                 placeholder="Enter Quantity"
                 style="width:250px;"
                 class="package-required"
+                min="1"
+                
                 
             >
 
@@ -534,21 +574,24 @@ button{
     >
 
         <!-- 2024 Discount -->
-        <div style="margin-bottom:20px;">
+        <div style="margin-bottom:10px;">
             <label style="font-size:18px;">
-                2024 Year Discount %
+                2024 Discount 
             </label>
+
 
             <input
                 type="number"
                 id="discount2024"
                 placeholder="Enter 2024 Discount %"
+                min="1"
                 style="
-                    width:250px;
+                    width:240px;
                     border:none;
                     border-bottom:1px solid #999;
-                    font-size:18px;
-                    padding:10px 0;
+                    font-size:14.5px;
+                    padding:5px ;
+                    margin-top:0;
                     outline:none;
                     background:transparent;
                 "
@@ -556,21 +599,22 @@ button{
         </div>
 
         <!-- 2025 Discount -->
-        <div style="margin-bottom:20px;">
+        <div style="margin-bottom:10px;">
             <label style="font-size:18px;">
-                2025 Year Discount %
+                2025 Discount 
             </label>
 
             <input
                 type="number"
                 id="discount2025"
                 placeholder="Enter 2025 Discount %"
+                min="1"
                 style="
-                    width:250px;
+                    width:240px;
                     border:none;
                     border-bottom:1px solid #999;
-                    font-size:18px;
-                    padding:10px 0;
+                    font-size:14.5px;
+                    padding:5px ;
                     outline:none;
                     background:transparent;
                 "
@@ -578,21 +622,22 @@ button{
         </div>
 
         <!-- 2026 Discount -->
-        <div style="margin-bottom:20px;">
+        <div style="margin-bottom:10px;">
             <label style="font-size:18px;">
-                2026 Year Discount %
+                2026 Discount 
             </label>
 
             <input
                 type="number"
                 id="discount2026"
                 placeholder="Enter 2026 Discount %"
+                min="1"
                 style="
-                    width:250px;
+                    width:240px;
                     border:none;
                     border-bottom:1px solid #999;
-                    font-size:18px;
-                    padding:10px 0;
+                    font-size:14.5px;
+                    padding:5px ;
                     outline:none;
                     background:transparent;
                 "
@@ -600,21 +645,22 @@ button{
         </div>
 
         <!-- 2026 Kit Discount -->
-        <div style="margin-bottom:20px;">
+        <div style="margin-bottom:10px;">
             <label style="font-size:18px;">
-                2026 Kit Year Discount %
+                2026 Kit Discount 
             </label>
 
             <input
                 type="number"
                 id="discount2026Kit"
                 placeholder="Enter 2026 Kit Discount %"
+                min="1"
                 style="
-                    width:250px;
+                    width:240px;
                     border:none;
                     border-bottom:1px solid #999;
-                    font-size:18px;
-                    padding:10px 0;
+                    font-size:14.5px;
+                    padding:5px ;
                     outline:none;
                     background:transparent;
                 "
@@ -657,6 +703,7 @@ button{
             value="Certain AMT"
             onclick="showAmountBox(); hideDiscountOptions();"
             class="package-required"
+            min="1"
         >
         Certain Amt Bill
     </div>
@@ -676,11 +723,11 @@ button{
             id="amount"
             placeholder="Enter Amount"
             style="
-                width:250px;
+                width:245px;
                 border:none;
                 border-bottom:1px solid #999;
-                font-size:18px;
-                padding:10px 0;
+                font-size:17px;
+                padding:7px ;
                 outline:none;
                 background:transparent;
             "
@@ -715,13 +762,9 @@ button{
     <input 
         type="text"
         value="kunald@ddecor.com"
-        
-        style="
-            background:#f5f5f5;
-            color:#555;
-            cursor:not-allowed;
-        "
-    >
+        readonly
+        style="background:#f5f5f5; color:#555;"
+     >
 
     <p style="
         margin-top:15px;
@@ -757,6 +800,23 @@ button{
     </div>
 
 
+    <!-- SELECTIVE EMAIL -->
+   <div class="card" id="selectiveEmailCard" style="display:none;">
+
+        <label>
+            SALES-PERSON EMAIL ID
+            <span class="required">*</span>
+        </label>
+
+        <input
+            type="email"
+            id="selectiveEmail"
+            placeholder="SALES-PERSON EMAIL ID"
+            class="selective-required"
+        >
+
+    </div>
+
     <!-- BOOK NAME -->
    <div class="card" id="bookSection">
 
@@ -788,12 +848,13 @@ button{
         <div style="margin-bottom:25px;">
 
             <input 
-                type="number"
+                type="text"
                 name="quantity[]"
                 placeholder="Enter Quantity"
                 style="width:250px;"
                 class="selective-required"
-                
+                min="1"
+                                
             >
 
         </div>
@@ -863,16 +924,12 @@ button{
             Approved by
         </div>
 
-        <input 
-            type="text"
-            value="kunald@ddecor.com"
-            
-            style="
-                background:#f5f5f5;
-                color:#555;
-                cursor:not-allowed;
-            "
-        >
+       <input 
+          type="text"
+          value="kunald@ddecor.com"
+          readonly
+          style="background:#f5f5f5; color:#555;"
+       >
 
     </div>
 
@@ -890,6 +947,7 @@ button{
     </button>
 
     <span 
+        class="clear-form-link"
         onclick="
             document.getElementById('bookingForm').reset();
             hideDiscountOptions();
@@ -913,6 +971,8 @@ button{
 
 
 <script>
+
+let salesPersons = [];
 
 /* =========================
    PACKAGE / SELECTIVE SECTION
@@ -964,6 +1024,11 @@ function hideDiscountOptions() {
         "discountOptions"
     ).style.display = "none";
 
+    document.getElementById("discount2024").value = "";
+    document.getElementById("discount2025").value = "";
+    document.getElementById("discount2026").value = "";
+    document.getElementById("discount2026Kit").value = "";
+
 }
 
 /* =========================
@@ -984,7 +1049,48 @@ function hideAmountBox() {
         "amountBox"
     ).style.display = "none";
 
+    document.getElementById("amount").value = "";
+
 }
+
+
+
+
+function checkSalesEmail() {
+
+    const selected =
+        document.getElementById("salesPerson").value;
+
+    const person = salesPersons.find(
+        x => x.name.trim().toLowerCase() === selected.trim().toLowerCase()
+    );
+
+    if (person && person.email) {
+
+    packageEmailCard.style.display = "none";
+    selectiveEmailCard.style.display = "none";
+
+    packageEmail.value = person.email;
+    selectiveEmail.value = person.email;
+
+    packageEmail.required = false;
+    selectiveEmail.required = false;
+
+} else {
+
+    packageEmailCard.style.display = "block";
+    selectiveEmailCard.style.display = "block";
+
+    packageEmail.value = "";
+    selectiveEmail.value = "";
+
+    packageEmail.required = true;
+    selectiveEmail.required = true;
+}
+
+}
+
+
 
 /* =========================
    CLEAR FORM
@@ -1121,6 +1227,11 @@ window.addEventListener("DOMContentLoaded", function () {
 
          customer:
                 document.getElementById("customerName").value,
+
+            yourEmail:
+                document.getElementById("packageSection").style.display === "block"
+                ? document.getElementById("packageEmail").value
+                : document.getElementById("selectiveEmail").value,
 
             year: Array.from(
                 document.querySelectorAll(
@@ -1270,6 +1381,7 @@ function addSalesPerson() {
 
     document.getElementById("salesPerson").value =
       code ? `${code} - ${name}` : name;
+    checkSalesEmail();
 }
 
 /* =========================
@@ -1380,25 +1492,34 @@ function loadMasterData() {
       });
     });
 
+
+
   // Sales Persons
-  fetch(URL + "?type=sales")
-    .then(r => r.json())
-    .then(data => {
+ fetch(URL + "?type=sales")
+.then(r => r.json())
+.then(data => {
 
-      const list =
-        document.getElementById("salesList");
+    salesPersons = data;
+    
+    // Listen for salesperson selection
+    document.getElementById("salesPerson")
+        .addEventListener("change", checkSalesEmail);
 
-      data.forEach(row => {
 
-        const option =
-          document.createElement("option");
 
-        option.value =
-          row[0];
+    const list = document.getElementById("salesList");
 
+    data.forEach(item => {
+
+        const option = document.createElement("option");
+        option.value = item.name;
         list.appendChild(option);
-      });
+
     });
+
+   });
+
+
 
 }
 
