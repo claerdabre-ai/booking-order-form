@@ -382,13 +382,11 @@ button{
     </label>
 
  <input
-    type="text"
-    id="salesPerson"
-    list="salesList"
-    placeholder="Type sales person ID or name..."
-    oninput="checkSalesEmail()"
-    required
->
+  type="text"
+  id="salesPerson"
+  list="salesList"
+  placeholder="Type sales person ID or name..."
+  required>
 
 <datalist id="salesList"></datalist>
 <button 
@@ -428,7 +426,16 @@ button{
 
 
 </div>
-  <!-- PACKAGE SECTION -->
+  
+<!-- COMMON EMAIL SECTION -->
+<div class="card" id="emailSection">
+<label>Email ID <span class="required">*</span></label>
+<input type="email" id="userEmail" placeholder="Enter your email" required>
+<button type="button" onclick="saveEmail()" style="margin-top:10px;">Update Email</button>
+</div>
+
+
+<!-- PACKAGE SECTION -->
 <div id="packageSection" style="display:none;">
     <div class="card section-wrapper">
 
@@ -439,31 +446,17 @@ button{
     </div>
 
     <!-- PACKAGE BOOK -->
-<div class="card">
+    <div class="card">
 
-    <div class="top-title">
-        Package Book
+        <div class="top-title">
+            Package Book
+        </div>
+
+       
+
     </div>
 
-</div>
-
-<!-- PACKAGE EMAIL -->
-<div class="card" id="packageEmailCard" style="display:none;">
-
-    <label>
-        SALES-PERSON EMAIL ID
-        <span class="required">*</span>
-    </label>
-
-    <input
-        type="email"
-        id="packageEmail"
-        placeholder="SALES-PERSON EMAIL ID"
-        class="package-required"
-    >
-
-</div>
-
+    
    <!-- YEAR -->
 <div class="card">
 
@@ -754,31 +747,9 @@ button{
            placeholder="Long-answer text">
 
     </div>
-
-    <!-- APPROVED -->
-    <div class="card">
-
-        <label>
-            Approved By (Authorized Email Only)
-        </label>
-    <input 
-        type="text"
-        value="kunald@ddecor.com"
-        readonly
-        style="background:#f5f5f5; color:#555;"
-     >
-
-    <p style="
-        margin-top:15px;
-        font-size:15px;
-        color:#777;
-    ">
-        Only this authorized approver is valid.
-    </p>
-
 </div>
 
-</div>
+    
 
 
   <!-- SELECTIVE SECTION -->
@@ -802,22 +773,7 @@ button{
     </div>
 
 
-    <!-- SELECTIVE EMAIL -->
-   <div class="card" id="selectiveEmailCard" style="display:none;">
-
-        <label>
-            SALES-PERSON EMAIL ID
-            <span class="required">*</span>
-        </label>
-
-        <input
-            type="email"
-            id="selectiveEmail"
-            placeholder="SALES-PERSON EMAIL ID"
-            class="selective-required"
-        >
-
-    </div>
+  
 
     <!-- BOOK NAME -->
    <div class="card" id="bookSection">
@@ -918,24 +874,9 @@ button{
            placeholder="Long-answer text">
 
     </div>
-
-    <!-- APPROVED -->
-    <div class="card">
-
-        <div class="question-title">
-            Approved by
-        </div>
-
-       <input 
-          type="text"
-          value="kunald@ddecor.com"
-          readonly
-          style="background:#f5f5f5; color:#555;"
-       >
-
-    </div>
-
 </div>
+
+    
 
 <!-- SUBMIT -->
 <div class="card" style="
@@ -974,8 +915,6 @@ button{
 
 <script>
 
-let salesPersons = [];
-
 /* =========================
    PACKAGE / SELECTIVE SECTION
 ========================= */
@@ -985,34 +924,29 @@ function showPackageSection() {
     document.getElementById("packageSection").style.display = "block";
     document.getElementById("selectiveSection").style.display = "none";
 
-    document.querySelectorAll(".package-required").forEach(f=>{
+    document.querySelectorAll(".package-required").forEach(f => {
         f.required = true;
     });
 
-    document.querySelectorAll(".selective-required").forEach(f=>{
+    document.querySelectorAll(".selective-required").forEach(f => {
         f.required = false;
     });
-
-    checkSalesEmail();
-
 }
+
 function showSelectiveSection() {
 
     document.getElementById("selectiveSection").style.display = "block";
     document.getElementById("packageSection").style.display = "none";
 
-    document.querySelectorAll(".selective-required").forEach(f=>{
+    document.querySelectorAll(".selective-required").forEach(f => {
         f.required = true;
     });
 
-    document.querySelectorAll(".package-required").forEach(f=>{
+    document.querySelectorAll(".package-required").forEach(f => {
         f.required = false;
     });
 
-    checkSalesEmail();
-
 }
-
 /* =========================
    DISCOUNT SECTION
 ========================= */
@@ -1059,49 +993,6 @@ function hideAmountBox() {
     document.getElementById("amount").value = "";
 
 }
-
-
-
-
-function checkSalesEmail() {
-
-    const packageEmailCard = document.getElementById("packageEmailCard");
-    const selectiveEmailCard = document.getElementById("selectiveEmailCard");
-
-    const packageEmail = document.getElementById("packageEmail");
-    const selectiveEmail = document.getElementById("selectiveEmail");
-
-    const entered = document.getElementById("salesPerson").value.trim().toLowerCase();
-
-    const person = salesPersons.find(x =>
-        x.name.trim().toLowerCase() === entered ||
-        `${x.code} - ${x.name}`.trim().toLowerCase() === entered
-    );
-
-    if (person) {
-        // Existing salesperson
-        packageEmail.value = person.email || "";
-        selectiveEmail.value = person.email || "";
-
-        packageEmailCard.style.display = "none";
-        selectiveEmailCard.style.display = "none";
-    } else if (entered !== "") {
-        // New salesperson
-        packageEmail.value = "";
-        selectiveEmail.value = "";
-
-        packageEmailCard.style.display = "block";
-        selectiveEmailCard.style.display = "block";
-    } else {
-        // Empty field
-        packageEmail.value = "";
-        selectiveEmail.value = "";
-
-        packageEmailCard.style.display = "none";
-        selectiveEmailCard.style.display = "none";
-    }
-}
-
 
 /* =========================
    CLEAR FORM
@@ -1239,11 +1130,7 @@ window.addEventListener("DOMContentLoaded", function () {
          customer:
                 document.getElementById("customerName").value,
 
-            yourEmail:
-                document.getElementById("packageSection").style.display === "block"
-                ? document.getElementById("packageEmail").value
-                : document.getElementById("selectiveEmail").value,
-
+            
             year: Array.from(
                 document.querySelectorAll(
                     ".yearCheckbox:checked"
@@ -1364,36 +1251,36 @@ window.addEventListener("DOMContentLoaded", function () {
    ADD NEW SALES PERSON
 ========================= */
 
-const name = prompt("Enter Sales Person Name");
-if (!name) return;
+function addSalesPerson() {
 
-const code = prompt("Enter Sales Person Code (optional)") || "";
+    const name = prompt("Enter Sales Person Name");
+    if (!name) return;
 
-const email = prompt("Enter Sales Person Email");
-if (!email) {
-    alert("Email is required.");
-    return;
-}
+    let code = "";
 
-fetch(
-    "https://script.google.com/macros/s/AKfycbzgnRUmIB22l-t9jzr56fYafN0fjymBg9yRzrlz7cEsJ7apkt6zOP0qtHdAAXQmCSZ2Gg/exec",
-    {
-        method:"POST",
-        mode:"no-cors",
-        headers:{
-            "Content-Type":"application/json"
-        },
-        body:JSON.stringify({
-            action:"addSalesPerson",
-            code:code,
-            name:name,
-            email:email
-        })
+    if (confirm("Do you want to add a Sales Person Code?")) {
+        code = prompt("Enter Sales Person Code") || "";
     }
-);
+
+    const email = prompt("Enter Sales Person Email");
+    if (!email) return;
+
+    fetch("https://script.google.com/macros/s/AKfycbzgnRUmIB22l-t9jzr56fYafN0fjymBg9yRzrlz7cEsJ7apkt6zOP0qtHdAAXQmCSZ2Gg/exec", {
+        method: "POST",
+        mode: "no-cors",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            action: "addSalesPerson",
+            name: name,
+            code: code,
+            email: email
+        })
+    });
+
     document.getElementById("salesPerson").value =
-      code ? `${code} - ${name}` : name;
-    checkSalesEmail();
+        code ? `${code} - ${name}` : name;
 }
 
 /* =========================
@@ -1402,32 +1289,30 @@ fetch(
 
 function addCustomer() {
 
-    const name =
-      prompt("Enter Customer Name");
-
+    const name = prompt("Enter Customer Name");
     if (!name) return;
 
-    const code =
-      prompt("Enter Customer Code (optional)") || "";
+    let code = "";
 
-    fetch(
-      "https://script.google.com/macros/s/AKfycbzgnRUmIB22l-t9jzr56fYafN0fjymBg9yRzrlz7cEsJ7apkt6zOP0qtHdAAXQmCSZ2Gg/exec",
-      {
+    if (confirm("Do you want to add a Customer Code?")) {
+        code = prompt("Enter Customer Code") || "";
+    }
+
+    fetch("https://script.google.com/macros/s/AKfycbzgnRUmIB22l-t9jzr56fYafN0fjymBg9yRzrlz7cEsJ7apkt6zOP0qtHdAAXQmCSZ2Gg/exec", {
         method: "POST",
         mode: "no-cors",
         headers: {
-          "Content-Type": "application/json"
+            "Content-Type": "application/json"
         },
         body: JSON.stringify({
-          action: "addCustomer",
-          code: code,
-          name: name
+            action: "addCustomer",
+            name: name,
+            code: code
         })
-      }
-    );
+    });
 
     document.getElementById("customerName").value =
-      code ? `${name} - ${code}` : name;
+        code ? `${code} - ${name}` : name;
 }
 
 
@@ -1504,43 +1389,42 @@ function loadMasterData() {
       });
     });
 
-
-
   // Sales Persons
- fetch(URL + "?type=sales")
-.then(r => r.json())
-.then(data => {
+  fetch(URL + "?type=sales")
+    .then(r => r.json())
+    .then(data => {
 
-    salesPersons = data;
-    
-    // Listen for salesperson selection
-    document.getElementById("salesPerson")
-        .addEventListener("change", checkSalesEmail);
+      const list =
+        document.getElementById("salesList");
 
+      data.forEach(row => {
 
+        const option =
+          document.createElement("option");
 
-    const list = document.getElementById("salesList");
-
-    data.forEach(item => {
-
-        const option = document.createElement("option");
         option.value =
-           item.code
-               ? `${item.code} - ${item.name}`
-               : item.name;
-        list.appendChild(option);
+          row[0];
 
+        list.appendChild(option);
+      });
     });
 
-  const salesInput = document.getElementById("salesPerson");
-
-    salesInput.addEventListener("change", checkSalesEmail);
-    salesInput.addEventListener("input", checkSalesEmail);
-   });
-
-
-
 }
+
+
+function saveEmail(){
+ const e=document.getElementById('userEmail').value.trim();
+ if(!e){alert('Enter an email.');return;}
+ localStorage.setItem('bookingEmail',e);
+ alert('Email saved.');
+}
+window.addEventListener('DOMContentLoaded',()=>{
+ const s=localStorage.getItem('bookingEmail');
+ if(s){
+   const el=document.getElementById('userEmail');
+   if(el) el.value=s;
+ }
+});
 
 </script>
 
