@@ -1068,14 +1068,7 @@ function hideAmountBox() {
 function checkSalesEmail() {
     
 
-    const email =
-    document.getElementById("packageEmail").value ||
-    document.getElementById("selectiveEmail").value;
-
-    if (email && !email.toLowerCase().endsWith("@ddecor.com")) {
-       alert("Please enter your D'Decor email address.");
-       return;
-}
+    
 
 
 
@@ -1334,6 +1327,17 @@ window.addEventListener("DOMContentLoaded", function () {
 
             approval: "Pending"
         };
+
+
+
+        // Validate D'Decor email
+     if (
+          data.yourEmail &&
+         !data.yourEmail.trim().toLowerCase().endsWith("@ddecor.com")
+) {
+          alert("Please enter a valid D'Decor email address (@ddecor.com).");
+          return;
+}
 
         fetch(
     "https://script.google.com/macros/s/AKfycbzgnRUmIB22l-t9jzr56fYafN0fjymBg9yRzrlz7cEsJ7apkt6zOP0qtHdAAXQmCSZ2Gg/exec",
