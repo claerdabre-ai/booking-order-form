@@ -1058,6 +1058,17 @@ function hideAmountBox() {
 
 function checkSalesEmail() {
 
+
+    const packageEmailCard = document.getElementById("packageEmailCard");
+    const selectiveEmailCard = document.getElementById("selectiveEmailCard");
+
+    const packageEmail = document.getElementById("packageEmail");
+    const selectiveEmail = document.getElementById("selectiveEmail");
+
+
+    const bookType = document.querySelector('input[name="booktype"]:checked');
+    if (!bookType) return;
+
     const selected = document.getElementById("salesPerson").value;
 
     const person = salesPersons.find(
