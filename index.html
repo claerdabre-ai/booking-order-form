@@ -1066,6 +1066,17 @@ function hideAmountBox() {
 
 
 function checkSalesEmail() {
+    
+
+    const email =
+    document.getElementById("packageEmail").value ||
+    document.getElementById("selectiveEmail").value;
+
+    if (email && !email.toLowerCase().endsWith("@ddecor.com")) {
+       alert("Please enter your D'Decor email address.");
+       return;
+}
+
 
 
     const packageEmailCard = document.getElementById("packageEmailCard");
@@ -1371,15 +1382,6 @@ window.addEventListener("DOMContentLoaded", function () {
 });
 });
 });
-
-const email =
-    document.getElementById("packageEmail").value ||
-    document.getElementById("selectiveEmail").value;
-
-if (email && !email.toLowerCase().endsWith("@ddecor.com")) {
-    alert("Please enter your D'Decor email address.");
-    return;
-}
 
 
 
