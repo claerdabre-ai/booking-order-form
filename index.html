@@ -386,6 +386,7 @@ button{
   id="salesPerson"
   list="salesList"
   placeholder="Type sales person ID or name..."
+  autocomplete="off"
   required>
 
 <datalist id="salesList"></datalist>
@@ -411,6 +412,7 @@ button{
   id="customerName"
   list="customerList"
   placeholder="Type customer code or customer name..."
+  autocomplete="off"
   required>
 
 <datalist id="customerList"></datalist>
@@ -458,6 +460,7 @@ button{
         id="packageEmail"
         placeholder="SALES-PERSON EMAIL ID"
         class="package-required"
+        autocomplete="off"
     >
 
 </div>
@@ -813,6 +816,7 @@ button{
             id="selectiveEmail"
             placeholder="SALES-PERSON EMAIL ID"
             class="selective-required"
+            autocomplete="off"
         >
 
     </div>
@@ -1381,6 +1385,8 @@ function addSalesPerson() {
     const code =
       prompt("Enter Sales Person Code (optional)") || "";
 
+   
+
     fetch(
       "https://script.google.com/macros/s/AKfycbzgnRUmIB22l-t9jzr56fYafN0fjymBg9yRzrlz7cEsJ7apkt6zOP0qtHdAAXQmCSZ2Gg/exec",
       {
@@ -1393,6 +1399,7 @@ function addSalesPerson() {
           action: "addSalesPerson",
           code: code,
           name: name,
+       
           
         })
       }
