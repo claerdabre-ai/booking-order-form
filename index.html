@@ -1072,7 +1072,7 @@ function checkSalesEmail() {
     const selected = document.getElementById("salesPerson").value;
 
     const person = salesPersons.find(
-        x => x.name.trim().toLowerCase() === selected.trim().toLowerCase()
+       x => x.name.trim().toLowerCase() === selected.trim().toLowerCase()
     );
 
     if (person && person.email) {
@@ -1372,7 +1372,6 @@ window.addEventListener("DOMContentLoaded", function () {
 
 function addSalesPerson() {
 
-    const yourEmail = document.getElementById("yourEmail").value;
 
     const name =
       prompt("Enter Sales Person Name");
@@ -1394,7 +1393,7 @@ function addSalesPerson() {
           action: "addSalesPerson",
           code: code,
           name: name,
-          email: yourEmail
+          
         })
       }
     );
